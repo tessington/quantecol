@@ -1,0 +1,95 @@
+setwd("~/Dropbox/Desktop/Rcode/FSH454/population models")
+
+run.dndt<-function(Nstart,r,K,n.years) {
+  N.vec<-matrix(NA,nrow=n.years,ncol=1)
+  N.vec[1,]<-c(Nstart)
+  for (t in 2:n.years){
+    N.prior<-N.vec[t-1,1]
+    deltaN.deltat<-N.prior*r*(1-N.prior/K)
+    N.vec[t,1]<-c(N.prior+deltaN.deltat)
+}
+return(N.vec)
+}
+
+log.function<-function(N,r,K) N+r*N*(rep(1,length(N))-N/K)
+last<-function(x) x[length(x)]
+
+
+# make logistic plot plus replacement line
+
+nsteps <- 10
+plotfilename <- paste("cobweb", nsteps,'.pdf', sep = "")
+
+pdf(file = plotfilename, width = 8,
+    height = 8,
+    useDingbats =F
+    )
+par(las = 1, omi = c(1, 1, .5, .5), mar = c(5,5,2,2))
+
+r=0.85
+K=100
+max.plot<-1.25*K
+n.years<-50
+nstart <- 20
+
+n.list <- 0:max.plot
+
+plot(n.list, log.function(n.list,r,K),
+     type = "l",
+     lwd = "3",
+     col = "black",
+     xaxs = "i",
+     yaxs = "i",
+     xlab =expression(paste("N"["t"])),
+     ylab = expression(paste("N"["t+1"])),
+     cex.lab = 1.5,
+     cex.axis = 1.2,
+     ylim = c(0, max.plot))
+
+# add replacement line
+lines(n.list, n.list,
+      lwd ="3",
+      col="gray",
+      lty = "solid")
+
+
+
+n.vec <- run.dndt(nstart, r, K, n.years)
+
+make.cobweb.lines<-function(n.vec,nsteps=10){
+  # start on the replacement line
+  
+  cobweb<-c(n.vec[1], n.vec[1])
+  
+  
+  # now move up to the actual curve
+  cobweb <- rbind(cobweb, c(n.vec[1], n.vec[2]))
+  # and then back over to replacement line
+  cobweb <- rbind(cobweb, c(n.vec[2], n.vec[2]))
+  
+  # repeat if n.steps >1
+  if (nsteps >1){
+  for (t in 2:nsteps) {
+    cobweb <- rbind(cobweb, c(n.vec[t-1], n.vec[t] ))
+    cobweb <- rbind(cobweb, c(n.vec[t], n.vec[t] ))
+                      
+  }
+  }
+return(cobweb)
+  }
+
+
+cobweb <- make.cobweb.lines(n.vec, nsteps =nsteps )  
+lines(cobweb[,1], cobweb[,2],
+        col="black",
+        lty = 1.5)
+  # make points where replacement line
+  index <- seq(1, nrow(cobweb), by = 2)
+  points(cobweb[index,1], cobweb[index,2],
+         pch=21,
+         bg = "white",
+         col = "black",
+         cex = 1.25
+         )
+
+dev.off()

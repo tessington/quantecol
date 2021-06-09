@@ -1,0 +1,104 @@
+setwd("~/Dropbox/Desktop/Rcode/FSH454/stochastic population models")
+rbar <- 0.002
+sd <- 0.0397
+Nstart <- 77
+Nextinct <- 40
+tmax <- 50
+rho <- .175
+
+
+years <- 0:tmax
+output <- rep(x = NA, times = 1000)
+sds <- output
+for (j in 1:1000) {
+  Nt <- rt <- etat <- rep(x = NA, times = tmax)
+  
+  vt <- rnorm(n = length(years),
+              mean = rbar,
+              sd = sd)
+  Nt[1] <- Nstart
+  etat[1] <- vt[1]
+  rt[1] <- rbar + etat[1]
+  
+  for (i in 2:length(years)) {
+    etat[i] <- rho * etat[i - 1] + sqrt(1 - rho ^ 2) * vt[i]
+    rt[i] <- rbar + etat[i]
+  }
+  sds[j] <- (sd(etat))
+  for (i in 1:tmax)
+    Nt[i + 1] <- exp(rt[i]) * Nt[i]
+  minpop <- min(Nt)
+  extinct <- ifelse(minpop < Nextinct, yes = 1, no = 0)
+  output[j] <- extinct
+}
+sum(output) / 1000
+mean(sds)
+
+
+### Stochastic beverton holt 
+
+alpha_range <- c(0.6, 1.0)
+d_range <- c(0.4, 0.7)
+
+
+alpha_bar <- mean(alpha_range)
+d_bar = mean(d_range)
+Nstar = 100
+beta <- (alpha_bar - d_bar) / (Nstar * d_bar)
+
+require(viridis)
+col <- plasma(25)
+plotfilename <- "bh_stochastic.pdf"
+pdf(file = plotfilename,
+    width = 5,
+    height = 4,
+    useDingbats= F)
+nyears <- 40
+plot(c(), c(),
+     type = "n",
+     xlab = "Years",
+     ylab = "Population Size",
+     xaxs = "i",
+     yaxs = "i",
+     las =1,
+     xlim = c(0, nyears),
+     ylim = c(30, 160),
+     xaxs = "i",
+     yaxs = "i",
+     las = 1
+)
+
+
+
+for (j in 1:25) {
+alpha_t <- runif(nyears, min = alpha_range[1], max = alpha_range[2])
+d_t <- runif(nyears, min = d_range[1], max = d_range[2])
+alpha_bar <- mean(alpha_range)
+Nt <- rep(NA, nyears)
+Nt[1] <- Nstar*0.5
+
+for (i in 2:nyears) Nt[i] <-  Nt[i-1]*(alpha_t[i-1] / (1 + beta*Nt[i-1]) + (1-d_t[i-1]))
+
+par(mfrow = c(1,1), xpd = NA)
+lines(1:nyears, Nt,
+     lwd = 2,
+     col = col[j]
+)
+}
+
+# plot deterministic
+for (i in 2:nyears) Nt[i] <-  Nt[i-1]*(alpha_bar / (1 + beta*Nt[i-1]) + (1-d_bar))
+lines(1:nyears, Nt,
+      lwd = 3,
+      col = "black")
+
+
+dev.off()
+
+
+system2("open",args = c("-a Skim.app",plotfilename))
+#points(1:20, Nt[1:20],
+#       pch = 21,
+#       bg = "black")
+
+     

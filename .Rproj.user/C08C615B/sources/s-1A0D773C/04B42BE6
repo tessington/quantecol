@@ -1,0 +1,26 @@
+{
+    "id": "04B42BE6",
+    "path": "~/Dropbox/Desktop/Rcode/quantecol/R/lotka_volterra_competition.R",
+    "project_path": "R/lotka_volterra_competition.R",
+    "type": "r_source",
+    "hash": "0",
+    "contents": "",
+    "dirty": true,
+    "created": 1623252627838.0,
+    "source_on_save": false,
+    "relative_order": 19,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "64,4",
+        "scrollLine": "55"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1623251800,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1623254414949,
+    "read_only": false,
+    "read_only_alternatives": []
+}

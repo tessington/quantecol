@@ -1,0 +1,16 @@
+#' pH and Salamander survivorship
+#'
+#' Experimental results from Green and Peloquin (2008) testing sensitivity of  salamander (Desmognathus quadramaculatus) larvae to pH exposure. Each experiment consisted of 96 larval salamanders exposed to specified pH levels for 96 hours.
+#'
+#'
+#' @name salamanders
+#' @docType data
+#' @format A data frame with 6 observations, each representing an summary of 96 experimental trials
+#' \describe{
+#'   \item{pH}{pH treatment.}
+#'   \item{numberDeaD}{Number of salamander (out of 96) that were dead at the end of the 96 hour period.}
+#'   }
+#' @source Green L.E. and Peloquin, J.E. (2008). Acute toxicity of acidity in larvae and adults of four stream salamander species (Plethodontidae).  Environmental Toxicology and Chemistry. 27:2361 - 2367.
+#' @keywords datasets
+
+"salamanders"

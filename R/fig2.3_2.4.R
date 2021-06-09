@@ -15,14 +15,14 @@ fig2.3_2.4 <- function() {
   K = 100
 
   Nlist <- 0:200
+  # close whatever plotting device is open so that we can start a new one
+  # reset graphic parameters to default
+  reset_graphics_par()
 
-  par(las = 1,
-      xpd = NA,
-      mfrow = c(1,1)
-  )
+ # par <- settings::reset_par()
+  par(las = 1)
 
-  log_fun <- function(x, r, K)
-    r * (1 - x / K)
+  log_fun <- function(x, r, K) r * (1 - x / K)
 
   plot(
     Nlist,
@@ -66,9 +66,10 @@ fig2.3_2.4 <- function() {
     cex = 1,
     pos = 4
   )
+  dev.off()
 
   # plot figure 2.4
-
+  plot.new()
   Nlist <- 0:100
   log.plot <- Nlist * r * (1 - Nlist / K)
   par(las = 1, mar = c(5,7,5,5), mfrow = c(1,2))
@@ -115,7 +116,6 @@ fig2.3_2.4 <- function() {
     cex.lab = 1.35
   )
 
-  # reset par commands
-  par(mfrow= c(1,1))
+
 }
 

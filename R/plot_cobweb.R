@@ -50,7 +50,7 @@ plot_cobweb <- function(modeloutput, modelname, modelpars) {
   if (modelname == "theta-logistic") {
     if(is.null(modelpars$theta)) stop("parameter theta not provided in modelpars list")
   }
-  if (length(output)<2) stop("modeloutput must be an array with at least two elements")
+  if (length(modeloutput)<2) stop("modeloutput must be an array with at least two elements")
 
   # End of error checking
 

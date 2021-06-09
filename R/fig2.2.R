@@ -10,14 +10,15 @@ fig2.2 <- function() {
   #' # generate plot
   #' fig2.2()
 
-
+# reset graphic parameters to default
+  reset_graphics_par()
 lambda=1.05
 years <-0:20
 
-N.t.105<-10*lambda^time.steps
+N.t.105<-10*lambda^years
 
 lambda=0.95
-N.t.095<-10*lambda^time.steps
+N.t.095<-10*lambda^years
 
 
 xlims<-c(0,20)

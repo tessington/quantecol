@@ -26,11 +26,12 @@ for (i in 2:n.years) {
   ntplus1 <-nt + r * nt * (1 - nt /K)
   output[i] <- ntplus1
 }
-
+# reset graphic parameters to default
+reset_graphics_par()
 par(las = 1, mar = c(5, 5, 5, 1), oma = c(1,5,1,1))
 layout(matrix(c(1,1,2),nrow = 1, ncol=3))
 modelpars = list(r = r, K = K)
-plot_cobweb(modeloutput= output, modelpars, modelname = "logistic")
+plot_cobweb(modeloutput = output, modelpars = modelpars, modelname = "logistic")
 
 
 # plot time dynamic plot on right
@@ -50,4 +51,5 @@ plot(1:n.years, output,
 )
 box()
 axis(1, at = c(1, 25, 50), cex.axis = 1.25)
+
 }

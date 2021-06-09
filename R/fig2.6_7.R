@@ -22,7 +22,8 @@ allee.function <- function(n.vec, r, K,A) r*(1-n.vec/K)*(n.vec/K-A/K)
 n.vec <- 0:1000
 logistic <-log.function(n.vec, r, K)
 allee <- allee.function(n.vec, 1.5*r, K, A)
-
+# reset graphic parameters to default
+reset_graphics_par()
 plot(n.vec,
      logistic,
      type = "l",
@@ -73,5 +74,4 @@ lines(n.vec,
       col = "black")
 
 abline (h = 0, lty = "dotted", col = "black", lwd =3, xpd = F)
-
 }

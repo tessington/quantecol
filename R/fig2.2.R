@@ -1,6 +1,7 @@
 fig2.2 <- function() {
-  #' Generate figure 2.2: Density Independent Model Comparison
+  #' Density Independent Model Dynamics
   #'
+  #'Generates Figure 2.2, showing three types of model dynamics of the density independent model
   #'
   #' @export
   #'
@@ -11,7 +12,8 @@ fig2.2 <- function() {
   #' fig2.2()
 
 # reset graphic parameters to default
-  reset_graphics_par()
+reset_graphics_par()
+
 lambda=1.05
 years <-0:20
 

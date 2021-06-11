@@ -1,7 +1,7 @@
 fig2.6_7 <- function() {
-  #' Generate figures 2.6 and 2.7: Compare Logistic to Allee effect model
+  #' Compare logistic to Allee effect model
   #'
-  #'
+  #' Generate figure 2.6 and 2.7, comparing standard compensatory model (logistic) with one that has depensatory population growth / Allee Effects
   #' @export
   #'
   #' @examples

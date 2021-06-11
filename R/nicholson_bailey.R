@@ -69,7 +69,7 @@ for (i in 2:niters) {
 Pmaxplot = ceiling(Pmax)
 Nmaxplot = ceiling(Nmax)
 
-par(mfrow = c(1,2), mar = c(2,2,1,1), xpd = F, new = F, las = 0)
+reset_graphics_par()
 # plot time dynamics
 plot(1:60,output[1:60, 1],
      col = "black",

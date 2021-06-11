@@ -66,6 +66,7 @@ lotka_volterra <- function(perturb = 1.05) {
   PredCol <- "gray70"
 
   ylim <- c(0, 3)
+  reset_graphics_par()
   par(
     mfrow = c(1, 2),
     mar = c(2, 2, 1, 1),

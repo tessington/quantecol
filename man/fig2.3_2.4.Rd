@@ -2,12 +2,12 @@
 % Please edit documentation in R/fig2.3_2.4.R
 \name{fig2.3_2.4}
 \alias{fig2.3_2.4}
-\title{Generate figures 2.3 and 2.4: Logistic Model}
+\title{The structure of the Logistic Model}
 \usage{
 fig2.3_2.4()
 }
 \description{
-Generate figures 2.3 and 2.4: Logistic Model
+Generate figures 2.3 and 2.4 showing the assumed linear relationship between per-capita growth rate and population density, and the resulting relationship between Delta N Delta t and Population size.
 }
 \examples{
 #view plotting commands

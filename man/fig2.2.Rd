@@ -2,12 +2,12 @@
 % Please edit documentation in R/fig2.2.R
 \name{fig2.2}
 \alias{fig2.2}
-\title{Generate figure 2.2: Density Independent Model Comparison}
+\title{Density Independent Model Dynamics}
 \usage{
 fig2.2()
 }
 \description{
-Generate figure 2.2: Density Independent Model Comparison
+Generates Figure 2.2, showing three types of model dynamics of the density independent model
 }
 \examples{
 #view plotting commands

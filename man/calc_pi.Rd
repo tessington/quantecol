@@ -2,7 +2,7 @@
 % Please edit documentation in R/calc_pi.R
 \name{calc_pi}
 \alias{calc_pi}
-\title{Monte carlo simulation to estimate pi.  Simulation calculates the ratio of randomly drawn points that are in a cirlce of radius r to a square with length r.}
+\title{Monte carlo simulation to estimate pi.}
 \usage{
 calc_pi(n.iters = 1e+05)
 }
@@ -13,7 +13,7 @@ calc_pi(n.iters = 1e+05)
 Monte Carlo based estimate of pi
 }
 \description{
-Monte carlo simulation to estimate pi.  Simulation calculates the ratio of randomly drawn points that are in a cirlce of radius r to a square with length r.
+Demonstration of example in 14.3.1 "What is pi".  This uses Monte Carlo simulation uses the ratio of randomly drawn points that are in a circle of radius r to a square with length r.
 }
 \examples{
 # use a small number of iterations, likely get a poor estimate of pi

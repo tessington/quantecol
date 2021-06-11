@@ -2,12 +2,12 @@
 % Please edit documentation in R/fig2.6_7.R
 \name{fig2.6_7}
 \alias{fig2.6_7}
-\title{Generate figures 2.6 and 2.7: Compare Logistic to Allee effect model}
+\title{Compare logistic to Allee effect model}
 \usage{
 fig2.6_7()
 }
 \description{
-Generate figures 2.6 and 2.7: Compare Logistic to Allee effect model
+Generate figure 2.6 and 2.7, comparing standard compensatory model (logistic) with one that has depensatory population growth / Allee Effects
 }
 \examples{
 #view plotting commands

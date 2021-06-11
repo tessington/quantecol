@@ -1,5 +1,7 @@
 fig2.3_2.4 <- function() {
-  #' Generate figures 2.3 and 2.4: Logistic Model
+  #' The structure of the Logistic Model
+  #'
+  #' Generate figures 2.3 and 2.4 showing the assumed linear relationship between per-capita growth rate and population density, and the resulting relationship between Delta N Delta t and Population size.
   #'
   #'
   #' @export

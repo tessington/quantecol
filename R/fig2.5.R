@@ -1,5 +1,8 @@
 fig2.5 <- function() {
-  #' Generate figure 2.5: Other Density Dependent models
+  #' Other Density Dependent Models
+  #'
+  #'
+  #' Generate figure 2.5 that illustrates four types of density dependent models, with plots showing N at time t+1 vs. N at time t.
   #'
   #'
   #' @export
@@ -11,10 +14,8 @@ fig2.5 <- function() {
   #' fig2.5()
 
 K <- 100
-# reset graphic parameters to default
+# set graphic parameters
 reset_graphics_par()
-
-par(mfrow = c(2,2), mar = c(4,4.5,1,1), xpd = F)
 # Ricker
 alphal  <- log(3)
 nlist <- seq(0, 200, length.out = 500)

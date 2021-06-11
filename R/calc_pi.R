@@ -1,5 +1,8 @@
 calc_pi <- function(n.iters = 100000) {
-  #' Monte carlo simulation to estimate pi.  Simulation calculates the ratio of randomly drawn points that are in a cirlce of radius r to a square with length r.
+  #' Monte carlo simulation to estimate pi.
+  #'
+  #'
+  #' Demonstration of example in 14.3.1 "What is pi".  This uses Monte Carlo simulation uses the ratio of randomly drawn points that are in a circle of radius r to a square with length r.
   #'
   #' @param n.iters the number of Monte Carlo iterations.  Must exceed 1000.
   #'

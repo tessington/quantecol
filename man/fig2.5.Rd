@@ -2,12 +2,12 @@
 % Please edit documentation in R/fig2.5.R
 \name{fig2.5}
 \alias{fig2.5}
-\title{Generate figure 2.5: Other Density Dependent models}
+\title{Other Density Dependent Models}
 \usage{
 fig2.5()
 }
 \description{
-Generate figure 2.5: Other Density Dependent models
+Generate figure 2.5 that illustrates four types of density dependent models, with plots showing N at time t+1 vs. N at time t.
 }
 \examples{
 #view plotting commands

@@ -2,12 +2,12 @@
 % Please edit documentation in R/fig2.1X.R
 \name{fig2.1X}
 \alias{fig2.1X}
-\title{Generate figure 2.11 through 2.16: Dynamic behavior of logistic model}
+\title{Dynamic behavior of the logistic model}
 \usage{
 fig2.1X(r)
 }
 \description{
-Generate figure 2.11 through 2.16: Dynamic behavior of logistic model
+Generate figures 2.11 through 2.16 by specifying the maximum rate of population growth (r), and seeing accompanying cobweb diagram and the plot of population abundance vs. time
 }
 \examples{
 #view plotting commands

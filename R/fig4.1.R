@@ -1,19 +1,19 @@
 fig4.1 <- function(stability = "stable") {
-  #' Generate figure 4.1: What is model stability?
+  #' Stability of multi-variable models
   #'
   #' This function uses a continuous-time lotka-volterra competition model to introduce the concept of stability, how to use the Adams-Bashford method to simulate a model with differential equations, and the calculation of Jacobian matrices and dominant eigenvalue.  The user can ask for a "stable" model configuration or an "unstable" model configuration
   #'
   #' @param stability character string that is either "stable" or "unstable"
-  #' @return a list object containing jacobian matrix and dominant eigenvalue
+  #' @return a list object containing jacobian matrix and dominant eigenvalue, and generates Figure 4.2 and 4.3
   #' @export
   #'
   #' @examples
   #' #view  commands
   #' print(fig4.2)
   #' # generate plot with a stable model
-  #' fig2.2("stable")
+  #' fig4.2("stable")
   #' # generate a plot with an unstable model
-  #' fig2.2("unstable")
+  #' fig4.2("unstable")
 
 
 
@@ -114,6 +114,7 @@ output<-run.dxydt(Xstart,Ystart,parslist, t.perturb=t.perturb,perturb=c(1.05,1),
 
 # plot the output
 reset_graphics_par()
+
 plot((1:nrow(output)) * deltat,
      output[, 1],
      type = "l",

@@ -99,6 +99,8 @@ parslist <- list(rx = rx, Kx = Kx, ry = ry, Ky = Ky, alpha = alpha, beta = beta)
 t.perturb=20
 # how many years to simulate
 n.years<-100
+# time steps to use
+deltat <- 0.1
 
 
 # Get Equilibrium

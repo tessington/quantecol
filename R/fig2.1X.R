@@ -4,7 +4,7 @@ fig2.1X <- function(r) {
   #'
   #' Generate figures 2.11 through 2.16 by specifying the maximum rate of population growth (r), and seeing accompanying cobweb diagram and the plot of population abundance vs. time
   #'
-  #' @parameter r maximum rate of population growth
+  #' @param r maximum rate of population growth
   #'
   #' @export
   #'

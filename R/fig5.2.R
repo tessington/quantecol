@@ -5,9 +5,9 @@ fig5.2 <- function() {
 #' @export
 #' @examples
 #' # View the code
-#' print(fig5.1)
+#' print(fig5.2)
 #' # See a randomized version of Figure 5.2
-#' fig5.1()
+#' fig5.2()
 
 
 n.start <- 10

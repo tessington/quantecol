@@ -1,4 +1,4 @@
-#' Density Dependent Survival
+#' Post settlement goby survivorship
 #'
 #' Experimental results from Forrester (1995) documenting effect of density on survivorship of Bridled goby (Coryphopterus glaucofraenum)
 #' on artificial reefs.

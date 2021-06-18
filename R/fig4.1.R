@@ -9,11 +9,15 @@ fig4.1 <- function(stability = "stable") {
   #'
   #' @examples
   #' #view  commands
-  #' print(fig4.2)
+  #' print(fig4.1)
   #' # generate plot with a stable model
-  #' fig4.2("stable")
+  #' fig4.1("stable")
   #' # generate a plot with an unstable model
-  #' fig4.2("unstable")
+  #' fig4.1("unstable")
+  #' # assign output to an object and view eigenvalue
+  #' output <- fig4.1("unstable")
+  #' output$eigenvalue
+  #' [1] 0.05553361
 
 
 

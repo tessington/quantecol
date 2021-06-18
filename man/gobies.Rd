@@ -3,7 +3,7 @@
 \docType{data}
 \name{gobies}
 \alias{gobies}
-\title{Density Dependent Survival}
+\title{Post settlement goby survivorship}
 \format{
 A data frame with 15 observations, each representing an experimental trial
 \describe{

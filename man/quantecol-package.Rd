@@ -9,9 +9,8 @@
 Data and example R scripts used in "Introduction to Quantitative Ecology".
 }
 \details{
-Example R code to accompany worked examples and figures shown in Introduction to Quantitative Ecology. This includes all of the datasets used, and many of the functions are named based on the figure number within the book text.  You may find it useful to view the code within the functions, which you can see by using the "print" function.  For instance, if you wish to view to code that was used to generate figure 2.2, you can enter print(fig2.2) into the console.
+Example R code to accompany worked examples and figures shown in Introduction to Quantitative Ecology. This includes all of the datasets used, and many of the functions are named based on the figure number within the book text.  You may find it useful to view the code within the functions, all of the functions have an optional input argument "viewcode", that when set to "TRUE", will print out the code used in the function.
 \itemize{
-\item Note that throughout you will see a call to a function called reset_graphics_par(), which simply sets all of the graphics parameters to R base settings.  In your own coding you likely won't need this, it is just needed for use of functions within this package.
 \item If the figures look strange, or if you get an error that says the figure margins are too small, simply drag the Rstudio panes so that the "Plot" window is larger.
 \item Most of the functions are named according to the figure number in the text.  A small number of functions applied to multiple figures, or to an example within the text, so a more descriptive name was given in those cases.
 \item Click on "Index" below to see the full list of functions

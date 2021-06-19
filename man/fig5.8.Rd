@@ -4,14 +4,17 @@
 \alias{fig5.8}
 \title{Stochastic Allee Effect Models}
 \usage{
-fig5.8()
+fig5.8(viewcode = FALSE)
+}
+\arguments{
+\item{viewcode}{TRUE or FALSE (default) indicating whether to print the function code}
 }
 \description{
 Compare scenarios shown in Figure 5.8 where (1) stochasticity caused a population to drop below the Allee threshold and therefore collapse and (2) where stochasticity saved a population by allowing it to increase above the extinction threshold.
 }
 \examples{
-View code
-print(fig5.8)
 Re-create a version of Figure 5.8
 fig5.8()
+View code
+fig5.8(viewcode = TRUE)
 }

@@ -1,20 +1,22 @@
-fig2.11 <- function(r) {
+fig2.11 <- function(r = 0.5, viewcode = F) {
   #' Dynamic behavior of the logistic model
   #'
   #'
   #' Generate figures 2.11 through 2.16 by specifying the maximum rate of population growth (r), and seeing accompanying cobweb diagram and the plot of population abundance vs. time
   #'
   #' @param r maximum rate of population growth
+  #' @param viewcode FALSE to run function (default), TRUE to run function and print code
   #'
   #' @export
   #'
   #' @examples
-  #' #view plotting commands
-  #' print(fig2.11)
+
   #' # generate plot with "typical" dynamics
   #' fig2.11(r = 0.5)
   #' # generate plot with "complex" dynamics
   #' fig2.11(r = 2.1)
+  #' #view plotting commands
+  #' print(viewcode = T)
 
 
 K=100
@@ -55,4 +57,5 @@ plot(1:n.years, output,
 box()
 axis(1, at = c(1, 25, 50), cex.axis = 1.25)
 
+if (viewcode) cat(readLines(con = "txt/fig2.11.txt"), sep = "\n")
 }

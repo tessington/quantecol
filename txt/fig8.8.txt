@@ -1,0 +1,42 @@
+# initialize data, use the built in data 'gobies'
+n.init <- gobies$initial_number
+n.final <- gobies$final_number
+# function to calculate negative log likelihood
+
+nll.fun <- function(par, n.init, n.final) {
+  p.max <- par[1]
+  alpha <- par[2]
+  ps <- p.max * exp(-alpha * n.init)
+  return(-sum(dbinom(x = n.final,
+                     size = n.init,
+                     prob = ps,
+                     log = T)))
+}
+# use optim to find maximum likelihood parameter estimates
+start.par <- c(0.7, 0.01)
+fit <- optim(par = start.par,
+             fn = nll.fun,
+             n.init = n.init,
+             n.final = n.final,
+             method = "Nelder-Mead")
+
+# Plot the data and fit
+plot(n.init, n.final,
+     type = "p",
+     pch = 21,
+     bg = "black",
+     xlab = expression(paste("N"[0])),
+     ylab = expression(paste("N"["survive"])),
+     xlim = c(0, 90),
+     ylim = c(0, 20),
+     xaxs = "i",
+     yaxs = "i",
+     las = 1)
+
+# plot best fit
+n.init.list <- 0:80
+pmax.mle <- fit$par[1]
+alpha.mle <- fit$par[2]
+n.hat <- pmax.mle * n.init.list * exp(-alpha.mle * n.init.list)
+lines(n.init.list, n.hat,
+      lwd = 3)

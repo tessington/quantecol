@@ -4,14 +4,17 @@
 \alias{fig2.6and7}
 \title{Compare logistic to Allee effect model}
 \usage{
-fig2.6and7()
+fig2.6and7(viewcode = F)
+}
+\arguments{
+\item{viewcode}{TRUE or FALSE (default) indicating whether to print the function code}
 }
 \description{
 Generate figure 2.6 and 2.7, comparing standard compensatory model (logistic) with one that has depensatory population growth / Allee Effects
 }
 \examples{
-#view plotting commands
-print(fig2.6and7)
 # generate plot
 fig2.6and7()
+#view plotting code
+fig2.6and7(viewcode = TRUE)
 }

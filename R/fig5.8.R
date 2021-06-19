@@ -1,13 +1,14 @@
-fig5.8 <- function() {
+fig5.8 <- function(viewcode = FALSE) {
   #' Stochastic Allee Effect Models
   #'
   #' Compare scenarios shown in Figure 5.8 where (1) stochasticity caused a population to drop below the Allee threshold and therefore collapse and (2) where stochasticity saved a population by allowing it to increase above the extinction threshold.
+  #' @param viewcode TRUE or FALSE (default) indicating whether to print the function code
   #' @export
   #' @examples
-  #' View code
-  #' print(fig5.8)
   #' Re-create a version of Figure 5.8
   #' fig5.8()
+  #' View code
+  #' fig5.8(viewcode = TRUE)
 
 # Inititialize population parameters
 vsd<-0.04 # standard deviation of random variables
@@ -87,6 +88,8 @@ plot(output[2:50],deltaNlist[1:50-1],
 abline(h=0,lty = "dashed")
 # plot the actual production function
 lines(deltaNout[,1],deltaNout[,2],type="l",lwd=2,col="black")
+
+if(viewcode) cat(readLines(con = "txt/fig5.8.txt"), sep = "\n")
 }
 
 

@@ -1,4 +1,4 @@
-plotProbDist <-function(plottype) {
+plotProbDist <-function(plottype ="binomial", viewcode = FALSE) {
   #' View Probability Distributions
   #'
   #'
@@ -13,15 +13,15 @@ plotProbDist <-function(plottype) {
   #' \item 'gamma'
   #' \item 'studentst'
   #' }
+  #' @param viewcode TRUE or FALSE (default) indicating whether to print the function code
   #' @export
   #'
   #' @examples
-  #' # View all plotting code
-  #' print(plotProbDist)
   #' # Generate figure 7.1
   #' plotProbDist("binomial")
-  #'
-  #'
+  #' # View all plotting code
+  #' plotProbDist(viewcode = TRUE)
+
 
   # error checking
   plottype <- tolower(plottype)
@@ -197,5 +197,5 @@ lines(xlist.short, pn.short,
       lwd = 3,
       col = "black")
 }
-
+  if(viewcode) cat(readLines(con = "txt/plotProbDist.txt"), sep = "\n")
 }

@@ -4,10 +4,12 @@
 \alias{fig4.1}
 \title{Stability of multi-variable models}
 \usage{
-fig4.1(stability = "stable")
+fig4.1(stability = "stable", viewcode = FALSE)
 }
 \arguments{
 \item{stability}{character string that is either "stable" or "unstable"}
+
+\item{viewcode}{TRUE or FALSE (default) indicating whether to print the function code}
 }
 \value{
 a list object containing jacobian matrix and dominant eigenvalue, and generates either panel of figure 4.1
@@ -16,8 +18,6 @@ a list object containing jacobian matrix and dominant eigenvalue, and generates 
 This function uses a continuous-time lotka-volterra competition model to introduce the concept of stability, how to use the Adams-Bashford method to simulate a model with differential equations, and the calculation of Jacobian matrices and dominant eigenvalue.  The user can ask for a "stable" model configuration or an "unstable" model configuration
 }
 \examples{
-#view  commands
-print(fig4.1)
 # generate plot with a stable model
 fig4.1("stable")
 # generate a plot with an unstable model
@@ -25,5 +25,7 @@ fig4.1("unstable")
 # assign output to an object and view eigenvalue
 output <- fig4.1("unstable")
 output$eigenvalue
-[1] 0.05553361
+#view  commands
+fig4.1(viewcode = TRUE)
+
 }

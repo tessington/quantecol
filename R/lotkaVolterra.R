@@ -1,17 +1,19 @@
-lotkaVolterra <- function(perturb = 1.05) {
+lotkaVolterra <- function(perturb = 1.05, viewcode = FALSE) {
   #' Simulate Lotka-Volterra Predator-Prey Model
   #'
   #' Simulate the time dynamics of the Lotka-Volterra model, and recreate figure 4.8
   #' @param  perturb is a multiplier that is used to perturb the model away from equilibrium.  The default 1.05 perturbs by 5 percent away from equilibrium
+  #' @param viewcode TRUE or FALSE (default) indicating whether to print the function code
   #' @return a list containing the jacobian matrix and dominant eigenvalue, and creates figure 4.8
   #' @export
   #' @examples
-  #' # View the code
-  #' print(lotkaVolterra)
   #' # Recreate figure 4.8 exactly
   #' lotkaVolterra(perturb = 1.05)
   #' # create a larger initial perturbation away from equilibrim
   #' lotkaVolterra(perturb = 1.25)
+  #' # View the code
+  #' lotkaVolterra(viewcode = TRUE)
+
 
   # Function that calculates the values of the dN/dt and dP/dt
   dXdt.fun <- function (modelpars, X) {
@@ -144,6 +146,7 @@ lotkaVolterra <- function(perturb = 1.05) {
   ev <- eigen(A)$values
   max.real.eigen <- max(Re(ev))
   eigenvalue <- ev[Re(ev) == max.real.eigen][1]
+  if(viewcode) cat(readLines(con = "txt/lotkaVolterra.txt"), sep = "\n")
 
   return(list(Jacobian = A, eigenvalue = eigenvalue))
 }

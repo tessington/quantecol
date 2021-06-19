@@ -1,11 +1,12 @@
-fig5.2 <- function() {
+fig5.2 <- function(viewcode  = FALSE) {
 #' Demographic stochasticity
 #'
 #' Generates figure 5.2, by simulating the time dynamics of a population demographic stochasticity (where the number of births and deaths each year is random because the population size is small) is important. Each time the simulation is run, a different outcome will be seen.
+#' @param viewcode TRUE or FALSE (default) indicating whether to print the function code
 #' @export
 #' @examples
 #' # View the code
-#' print(fig5.2)
+#' fig5.2(viewcode = TRUE)
 #' # See a randomized version of Figure 5.2
 #' fig5.2()
 
@@ -41,4 +42,6 @@ points(1:n.years,
        n.t,
        pch = 21,
        bg = "black")
+if(viewcode) cat(readLines(con = "txt/fig5.2.txt"), sep = "\n")
+
 }

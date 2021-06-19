@@ -1,0 +1,70 @@
+ # extract carrying capacity from modelpars list
+  K <- modelpars$K
+  # make a list of N at time t
+  nt<- seq(from = 0, to = 1.5 * K, length.out = 100)
+  # do this if model is "logistic"
+  if(modelname == "logistic") {
+    # extract r from modelpars list
+    r <- modelpars$r
+    # calculate Nt+1 from Nt
+    ntplus1 <- nt + r * nt* (1 - nt / K)
+  }
+  # do this if model is "ricker"
+  if(modelname == "ricker") {
+    # extract alpha from modelpars list
+    alphal <- modelpars$alphal
+    # calculate Nt+1 from Nt
+    ntplus1<- nt* exp(alphal * (1 - nt / K))
+  }
+  # do this if model is "gompertz"
+  if(modelname == "gompertz") {
+    # extract b from modelpars list
+    b = modelpars$b
+    nt[1] <- 0.001 # not defined for nt = 0
+    # calculate Nt+1 from Nt
+    ntplus1 <-nt* (nt/ K)^b
+  }
+  # do this if model is "theta-logistic
+  if(modelname == "theta-logistic") {
+    # extract r from modelpars list
+  r <- modelpars$r
+  theta <- modelpars$theta
+  # calculate Nt+1 from Nt
+  ntplus1<- nt + r * nt * (1 - (nt/K)^theta)
+  }
+
+  # plot recursive function
+  plot(x = nt, y = ntplus1,
+       type = "l",
+       lwd = 3,
+       xlab = expression(paste("N"["t"], sep = "")),
+       ylab = expression(paste("N"["t"+1], sep = "")),
+       ylim = c(0, 1.5 * K),
+       xlim <- c(0, 1.5 * K),
+       las =1,
+       cex.lab = 1.25,
+       cex.axis = 1.25
+  )
+  # Add Nt = Nt+1 line (Replacement line)
+  abline (a = 0,
+          b = 1,
+          col = "gray",
+          lwd = 3)
+
+  # plot vertical lines
+  n.loops <- length(modeloutput) -1
+  for (i in 1:n.loops){
+    xs <- rep(x = modeloutput[i], times = 2)
+    ys <- c(modeloutput[i], modeloutput[i+1])
+    lines(xs, ys,
+          lwd = 1
+    )
+  }
+  # plot horizontal lines
+  for (i in 1:n.loops) {
+    xs <- c(modeloutput[i], modeloutput[i+1])
+    ys <- rep (x = modeloutput[i+1], times = 2)
+    lines(xs, ys,
+          lwd = 1
+    )
+  }

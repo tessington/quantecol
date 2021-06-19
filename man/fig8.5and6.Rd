@@ -4,7 +4,10 @@
 \alias{fig8.5and6}
 \title{Negative Binomial Likelihood Profile}
 \usage{
-fig8.5and6()
+fig8.5and6(viewcode = FALSE)
+}
+\arguments{
+\item{viewcode}{TRUE or FALSE (default) indicating whether to print the function code}
 }
 \value{
 a list object containing the maximum likelihood estimate of r and the confidence interval
@@ -13,9 +16,9 @@ a list object containing the maximum likelihood estimate of r and the confidence
 This function generates Figures 8.5 and Figure 8.6, and returns the maximum likelihood estimate of r and k as calculated through grid-based search and by applying numerical optimization methods, and the confidence interval of r
 }
 \examples{
-#view  commands
-print(fig8.5and6)
 # generate plots shown in Fig 8.5 and Fig 8.6, and save results
 soln <- fig8.5and6()
 print(soln)
+#view code
+fig8.5and6(viewcode = TRUE)
 }

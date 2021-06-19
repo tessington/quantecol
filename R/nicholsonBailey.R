@@ -1,19 +1,21 @@
-nicholsonBailey <- function(perturb = 1.01) {
+nicholsonBailey <- function(perturb = 1.01, viewcode = FALSE) {
   #' Nicholson-Bailey Host Parasitoid Model
   #'
   #' This function simulates the dynamics of the Nicholson Bailey Host Parasitoid model, plots Fig. 4.9, and returns the Jacobian matrix, dominant eigenvalue and eigenvalue magnitude
   #'
   #' @param perturb is a multiplier that is used to perturb the model away from equilibrium.  The default 1.01 perturbs by 1 percent away from equilibrium
+  #' @param viewcode TRUE or FALSE (default) indicating whether to print the function code
   #' @return a list object containing jacobian matrix, dominant eigenvalue, and eigenvalue magnitude
   #' @export
   #'
   #' @examples
-  #' #view  commands
-  #' print(nicholsonBailey)
   #' # generate plot with equivalent to Fig 4.9
   #' nicholsonBailey()
   #' # generate a plot with larger perturbation away from equilibrium
   #' nicholsonBailey(perturb = 1.05)
+  #' #view  commands
+  #' nicholsonBailey(viewcode = TRUE)
+
 
 # Parameter values
 lambda <- 1.1
@@ -120,6 +122,6 @@ ev = eigen(Jacob)
 
 eigen.magnitude = (Re(ev$values[1]) ^ 2 + Im(ev$values[1]) ^ 2) ^ 0.5
 dominant.eigenvalue <- ev$values[1]
-
+if(viewcode) cat(readLines(con = "txt/nicholsonBailey.txt"), sep = "\n")
 return(list(Jacobian = Jacob, eigenvalue = dominant.eigenvalue, eigenvalue_magnitude = eigen.magnitude))
 }

@@ -1,0 +1,38 @@
+# Set initialization parameters
+K=100
+n.years<-25
+nstart <- 20
+
+# run  model
+output <- rep(NA, times = n.years)
+output[1] <- nstart
+for (i in 2:n.years) {
+  nt <- output[i-1]
+  ntplus1 <-nt + r * nt * (1 - nt /K)
+  output[i] <- ntplus1
+}
+# set up graphics parameters to make plot
+par(las = 1, mar = c(5, 5, 5, 1), oma = c(1,5,1,1))
+layout(matrix(c(1,1,2),nrow = 1, ncol=3))
+# make a list called modelpars
+modelpars = list(r = r, K = K)
+# run function "plotCobweb".  see help(plotCobweb) for details)
+plotCobweb(modeloutput = output, modelpars = modelpars, modelname = "logistic")
+
+
+# plot time dynamic plot on right
+plot(1:n.years, output,
+     type = "l",
+     lwd=3,
+     col ="black",
+     axes =F,
+     ylab = "",
+     xlab = 'Time',
+     xaxs = "i",
+     yaxs = "i",
+     ylim = c(0, 1.5*K),
+     xlim = c(1, n.years),
+     cex.lab = 1.5
+)
+box()
+axis(1, at = c(1, 25, 50), cex.axis = 1.25)

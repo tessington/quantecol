@@ -4,22 +4,24 @@
 \alias{fig5.4}
 \title{Density Independent Stochastic Model Demonstration}
 \usage{
-fig5.4(mu = 0.05, sigma = 0.05)
+fig5.4(mu = 0.05, sigma = 0.05, viewcode = FALSE)
 }
 \arguments{
 \item{mu}{the mean of the log-lambdas (default to 0.05)}
 
 \item{sigma}{the standard deviation of the log-lambdas (default to 0.05)}
+
+\item{viewcode}{TRUE or FALSE (default) indicating whether to print the function code}
 }
 \description{
 Generate and plot (Figure 5.4) 20 versions of the density independent stochastic model, with specified mean log-lambda (mu) and standard deviation (sigma).  Each line is a unique model outcome.
 }
 \examples{
-# View the code
-print(fig5.4)
 # View Figure 5.4
 fig5.4()
 # View with more inter-annual variation in the log-lambdas
 fig5.4(mu = 0.05, sigma = 0.1)
+#' # View the code
+fig5.4(viewcode)
 
 }

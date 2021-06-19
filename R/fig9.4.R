@@ -1,19 +1,21 @@
-fig9.4 <- function(pmf = "poisson") {
+fig9.4 <- function(pmf = "poisson", viewcode = FALSE) {
   #' Fit Song Sparrow Reproductive Success
   #'
   #' This function generates Figure 9.4 by estimating the maximum likelihood parameter values of the ricker function, and plotting the best fit and generating an AIC table showing comparison between the Ricker function and a density independent function.  The default probability mass function is Poisson.
   #'
   #' @param pmf a character string that is either "poisson" or "pmf", indicating the probabiilty function to be used in model fitting
+  #' @param viewcode TRUE or FALSE (default) indicating whether to print the function code
   #' @return A matrix showing negative log likelihood, AIC, and delta AIC
   #' @export
   #'
   #' @examples
-  #' #view  commands
-  #' print(fig9.4)
   #' # generate plot in Fig 9.4 and get AIC table
   #' fig9.4()
   #' # Repeat using negative binomial model
   #' fig9.4(pmf = "nbinom")
+  #' #' #view  commands
+  #' fig9.4(viewcode = TRUE)
+
 
 pmf <- tolower(pmf)
 if(!pmf %in% c("poisson", "nbinom")) stop("function input 'pmf' must be either 'poisson' or 'nbinom'")
@@ -139,5 +141,6 @@ rownames(AIC.table) <- c("Density Independent", "Ricker")
 AIC.table[,1] <- c(di.fit$value,dd.fit$value)
 AIC.table[,2] <- 2 * AIC.table[,1] + 2 * npars
 AIC.table[,3] <- AIC.table[,2] - min(AIC.table[,2])
+if(viewcode) cat(readLines(con = "txt/fig9.4.txt"), sep = "\n")
 return(AIC.table)
 }

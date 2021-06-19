@@ -1,17 +1,17 @@
-fig8.5and6 <- function() {
+fig8.5and6 <- function(viewcode = FALSE) {
   #' Negative Binomial Likelihood Profile
   #'
   #' This function generates Figures 8.5 and Figure 8.6, and returns the maximum likelihood estimate of r and k as calculated through grid-based search and by applying numerical optimization methods, and the confidence interval of r
-  #'
+  #' @param viewcode TRUE or FALSE (default) indicating whether to print the function code
   #' @return a list object containing the maximum likelihood estimate of r and the confidence interval
   #' @export
   #'
   #' @examples
-  #' #view  commands
-  #' print(fig8.5and6)
   #' # generate plots shown in Fig 8.5 and Fig 8.6, and save results
   #' soln <- fig8.5and6()
   #' print(soln)
+  #' #view code
+  #' fig8.5and6(viewcode = TRUE)
 
 
 thedata <- c(2,1,7,1,2,5)
@@ -86,7 +86,9 @@ nb.soln <- optim(par = start.pars,
                  t = t,
                  method = "Nelder-Mead")
 
+if(viewcode) cat(readLines(con = "txt/fig8.5and6.txt"), sep = "\n")
+options(warn = 0)
 return(list(r.mle.grid = r.mle, r.mle.numeric = nb.soln$par[1], k.mle.grid = k.mle,
             k.mle.numeric = nb.soln$par[2], r.ci = c(lb, ub)))
-options(warn = 0)
+
 }

@@ -1,22 +1,21 @@
-fig5.3 <- function() {
+fig5.3 <- function(viewcode = FALSE) {
   #' Effect of Stochasticity on Average Population Size
   #'
   #' Demonstration of how variability in population growth rate leads to reduced average population size (Figure 5.3). In each simulation, annual population growth rate, lambda, varies randomly within a specified range.  This is repeated many times, and the average over each simulation is plotted.
   #'
+  #' @param viewcode TRUE or FALSE (default) indicating whether to print the function code
   #' @export
   #' @examples
-  #' # View the code
-  #' print(fig5.3)
   #' # View Figure 5.3
   #' fig5.3()
+  #' # View the code
+  #' fig5.3(viewcode = TRUE)
 
 run_model <- function(lambda_bar, range) {
   Nt <- rep(NA,100)
   Nt[1] <- N_0
   lambda_t <- runif(100, min = lambda_bar - range, max = lambda_bar + range)
-
   lambda_t <- lambda_t - mean(lambda_t)+1
-
   for (i in 2:100) Nt[i] <- Nt[i-1]*lambda_t[i-1]
   return(Nt)
 }
@@ -65,5 +64,5 @@ cols <- c("black", "gray80", "gray30")
        labels = text.labels,
        pos = 2,
        cex = 1.25)
-
+  if(viewcode) cat(readLines(con = "txt/fig5.3.txt"), sep = "\n")
 }

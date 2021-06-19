@@ -1,21 +1,23 @@
-fig2.5 <- function() {
+fig2.5 <- function(viewcode = F) {
   #' Other Density Dependent Models
   #'
   #'
   #' Generate figure 2.5 that illustrates four types of density dependent models, with plots showing N at time t+1 vs. N at time t.
+  #' @param viewcode TRUE or FALSE (default) indicating whether to print the function code
   #'
   #'
   #' @export
   #'
   #' @examples
-  #' #view plotting commands
-  #' print(fig2.5)
   #' # generate plot
   #' fig2.5()
+  #'  #view code
+  #' fig2.5(viewcode = TRUE)
 
 K <- 100
 # set graphic parameters
 reset_graphics_par()
+par(mfrow = c(2,2))
 # Ricker
 alphal  <- log(3)
 nlist <- seq(0, 200, length.out = 500)
@@ -102,5 +104,5 @@ lines(nlist,nlist * r * (1-(nlist/K)^theta)+nlist,
       type = "l",
       lwd=2)
 text(x = 20, y =130, "theta-logistic", pos = 4)
-settings::reset_par()
+if(viewcode) cat(readLines(con = "txt/fig2.5.txt"), sep = "\n")
 }

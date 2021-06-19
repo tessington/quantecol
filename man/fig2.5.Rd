@@ -4,14 +4,17 @@
 \alias{fig2.5}
 \title{Other Density Dependent Models}
 \usage{
-fig2.5()
+fig2.5(viewcode = F)
+}
+\arguments{
+\item{viewcode}{TRUE or FALSE (default) indicating whether to print the function code}
 }
 \description{
 Generate figure 2.5 that illustrates four types of density dependent models, with plots showing N at time t+1 vs. N at time t.
 }
 \examples{
-#view plotting commands
-print(fig2.5)
 # generate plot
 fig2.5()
+ #view code
+fig2.5(viewcode = TRUE)
 }

@@ -1,15 +1,15 @@
-fig2.2 <- function() {
+fig2.2 <- function(viewcode = F) {
   #' Density Independent Model Dynamics
   #'
-  #'Generates Figure 2.2, showing three types of model dynamics of the density independent model
-  #'
+  #' Generates Figure 2.2, showing three types of model dynamics of the density independent model
+  #' @param viewcode TRUE or FALSE (default) indicating whether to print the function code
   #' @export
   #'
   #' @examples
-  #' #view plotting commands
-  #' print(fig2.2)
   #' # generate plot
   #' fig2.2()
+  #' #view plotting code
+  #' fig2.2(viewcode = T)
 
 # reset graphic parameters to default
 reset_graphics_par()
@@ -47,4 +47,5 @@ text(x = 10, y= 17, labels = parse(text=expression(paste(lambda,">1",sep=""))))
 text(x = 10, y= 11, labels = parse(text=expression(paste(lambda,"=1",sep=""))))
 text(x = 10, y= 5, labels = parse(text=expression(paste(lambda,"<1",sep=""))))
 
+if(viewcode) cat(readLines(con = "txt/fig2.2.txt"), sep = "\n")
 }

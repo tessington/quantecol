@@ -4,10 +4,12 @@
 \alias{nicholsonBailey}
 \title{Nicholson-Bailey Host Parasitoid Model}
 \usage{
-nicholsonBailey(perturb = 1.01)
+nicholsonBailey(perturb = 1.01, viewcode = FALSE)
 }
 \arguments{
 \item{perturb}{is a multiplier that is used to perturb the model away from equilibrium.  The default 1.01 perturbs by 1 percent away from equilibrium}
+
+\item{viewcode}{TRUE or FALSE (default) indicating whether to print the function code}
 }
 \value{
 a list object containing jacobian matrix, dominant eigenvalue, and eigenvalue magnitude
@@ -16,10 +18,10 @@ a list object containing jacobian matrix, dominant eigenvalue, and eigenvalue ma
 This function simulates the dynamics of the Nicholson Bailey Host Parasitoid model, plots Fig. 4.9, and returns the Jacobian matrix, dominant eigenvalue and eigenvalue magnitude
 }
 \examples{
-#view  commands
-print(nicholsonBailey)
 # generate plot with equivalent to Fig 4.9
 nicholsonBailey()
 # generate a plot with larger perturbation away from equilibrium
 nicholsonBailey(perturb = 1.05)
+#view  commands
+nicholsonBailey(viewcode = TRUE)
 }

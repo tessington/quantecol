@@ -1,18 +1,13 @@
-fig3.1 <- function() {
+fig3.1 <- function(viewcode = F) {
 
   #' Structured population Demo
   #'
   #' Runs several examples of structured population analysis based on the 5-age-c.ass model illustrated in Chapter 3.  This includes the coding of structured models using both matrix and non-matrix notation, and use of eigenvalues and eigenvectors.  Returns the graphic in Figure 3.1.
-  #' @param n.iters the number of Monte Carlo iterations.  Must exceed 1000.
-  #'
-  #'
+  #' @param TRUE or FALSE (default) indicating whether to print the function code
   #' @return A list containing population growth rate and stable age distribution calculated via simulation and via eigenvalue / eigenvector analysis, elasticities, and a plot of transitent and stable model dynamics
   #' @export
   #'
   #' @examples
-  #' # View the code
-  #' print(fig3.1)
-  #'
   #' # Run the code, and print output at console
   #' fig3.1()
   #'
@@ -20,7 +15,8 @@ fig3.1 <- function() {
   #' output <- fig3.1()
   #' print(output)
   #'
-  #'
+  #' # View the code
+  #' fig3.1(viewcode = T)
   #'
 
 ## Define Parameters
@@ -122,7 +118,7 @@ legend(x = 21, y = 200, legend = c("Age-1", "Age-2", "Age-3", "Age-4", "Age-5"),
        lwd = 2, col = cols, border = "black", cex = 0.8)
 text(x = 2.5, y = 210, labels = "Transient")
 text(x = 15, y = 300, labels = "Stable")
-
+if(viewcode) cat(readLines(con = "txt/fig3.1.txt"), sep = "\n")
 return(list(lambda_from_simulation = lambda_sim, lambda_from_eiegenvalue = lambda,  stable_age_sim = age.distribution, stable_age_eigen =  age.distribution_eig, elasticity = e))
 
 }

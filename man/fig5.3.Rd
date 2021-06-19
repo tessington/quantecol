@@ -4,14 +4,17 @@
 \alias{fig5.3}
 \title{Effect of Stochasticity on Average Population Size}
 \usage{
-fig5.3()
+fig5.3(viewcode = FALSE)
+}
+\arguments{
+\item{viewcode}{TRUE or FALSE (default) indicating whether to print the function code}
 }
 \description{
 Demonstration of how variability in population growth rate leads to reduced average population size (Figure 5.3). In each simulation, annual population growth rate, lambda, varies randomly within a specified range.  This is repeated many times, and the average over each simulation is plotted.
 }
 \examples{
-# View the code
-print(fig5.3)
 # View Figure 5.3
 fig5.3()
+# View the code
+fig5.3(viewcode = TRUE)
 }

@@ -4,7 +4,7 @@
 \alias{plotProbDist}
 \title{View Probability Distributions}
 \usage{
-plotProbDist(plottype)
+plotProbDist(plottype = "binomial", viewcode = FALSE)
 }
 \arguments{
 \item{plottype}{a character string that is either
@@ -16,15 +16,15 @@ plotProbDist(plottype)
 \item 'gamma'
 \item 'studentst'
 }}
+
+\item{viewcode}{TRUE or FALSE (default) indicating whether to print the function code}
 }
 \description{
 Compare probability-mass and -density functions, as illustrated in Figures 7.1 - 7.6.
 }
 \examples{
-# View all plotting code
-print(plotProbDist)
 # Generate figure 7.1
 plotProbDist("binomial")
-
-
+# View all plotting code
+plotProbDist(viewcode = TRUE)
 }

@@ -4,14 +4,17 @@
 \alias{fig2.2}
 \title{Density Independent Model Dynamics}
 \usage{
-fig2.2()
+fig2.2(viewcode = F)
+}
+\arguments{
+\item{viewcode}{TRUE or FALSE (default) indicating whether to print the function code}
 }
 \description{
 Generates Figure 2.2, showing three types of model dynamics of the density independent model
 }
 \examples{
-#view plotting commands
-print(fig2.2)
 # generate plot
 fig2.2()
+#view plotting code
+fig2.2(viewcode = T)
 }

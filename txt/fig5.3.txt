@@ -1,0 +1,60 @@
+# function to run the model with specified mean lambda and range
+
+run_model <- function(lambda_bar, range) {
+  Nt <- rep(NA,100)
+  Nt[1] <- N_0
+  # Generate random lambda_t's within specified range
+  lambda_t <- runif(100, min = lambda_bar - range, max = lambda_bar + range)
+  # Recentering to ensure that the mean of lambda equals lambda_bar
+  lambda_t <- lambda_t - mean(lambda_t)+1
+  # use these lambda_t's to project the model forward
+  for (i in 2:100) Nt[i] <- Nt[i-1]*lambda_t[i-1]
+  return(Nt)
+}
+
+# set up matrix to hold output.
+output <- matrix(NA, nrow = 100000, ncol = 100)
+lambda_bar <-1
+N_0 <- 100
+cols <- c("black", "gray80", "gray30")
+  plot(1:100, rep(N_0,100),
+       type = "l",
+       lwd = 2,
+       col = cols[1],
+       xlim = c(1,100),
+       xlab = "Years",
+       ylim = c(80, 110),
+       ylab = "Population Size",
+       las =1)
+
+  # repeat for range = 0.05
+  range <- 0.05
+  for (i in 1:100000) output[i,] <- run_model(lambda_bar, range)
+  Nt_avg <- colMeans(output)
+
+  lines(1:100, Nt_avg,
+        lwd = 2,
+        col = cols[2]
+  )
+
+  # repeat for range = 0.1
+  range <- 0.1
+  for (i in 1:100000) output[i,] <- run_model(lambda_bar, range)
+  Nt_avg <- colMeans(output)
+
+
+  lines(1:100, Nt_avg,
+        lwd = 2,
+        col = cols[3]
+  )
+
+  # Add text to plot
+  text.labels <- c(expression(paste(lambda["t"], "=1")),
+                   expression(paste(0.95, "<",lambda["t"], "<",1.05)),
+                   expression(paste(0.9, "<",lambda["t"], "<",1.10))
+  )
+
+  text(x = rep(100,3), y  = c(101, 95, 84),
+       labels = text.labels,
+       pos = 2,
+       cex = 1.25)

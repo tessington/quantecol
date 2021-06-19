@@ -1,28 +1,29 @@
-fig2.6and7 <- function() {
+fig2.6and7 <- function(viewcode = F) {
   #' Compare logistic to Allee effect model
   #'
   #' Generate figure 2.6 and 2.7, comparing standard compensatory model (logistic) with one that has depensatory population growth / Allee Effects
+  #' @param viewcode TRUE or FALSE (default) indicating whether to print the function code
   #' @export
   #'
   #' @examples
-  #' #view plotting commands
-  #' print(fig2.6and7)
   #' # generate plot
   #' fig2.6and7()
+  #' #view plotting code
+  #' fig2.6and7(viewcode = TRUE)
 # code to compare compensatory vs. depensatory models
 r <- 0.5
 K <- 1000
 A <- 200
 
-log.function <- function(n.vec, r, K) r* (1-n.vec/K)
-allee.function <- function(n.vec, r, K,A) r*(1-n.vec/K)*(n.vec/K-A/K)
+log.function <- function(n, r, K) r* (1-n/K)
+allee.function <- function(n, r, K,A) r*(1-n/K)*(n.list/K-A/K)
 
-n.vec <- 0:1000
-logistic <-log.function(n.vec, r, K)
-allee <- allee.function(n.vec, 1.5*r, K, A)
+n.list <- 0:1000
+logistic <-log.function(n.list, r, K)
+allee <- allee.function(n.list, 1.5*r, K, A)
 # reset graphic parameters to default
 reset_graphics_par()
-plot(n.vec,
+plot(n.list,
      logistic,
      type = "l",
      lwd =3,
@@ -37,7 +38,7 @@ plot(n.vec,
      cex.axis = 1.25,
      cex.lab = 1.25)
 
-lines(n.vec,
+lines(n.list,
       allee,
       lwd = 3,
       col = "black")
@@ -45,12 +46,12 @@ lines(n.vec,
 abline (h = 0, lty = "dotted", col = "black", lwd =3, xpd = F)
 
 
-n.vec <- 0:1000
+n.list <- 0:1000
 par(oma = c(0,2,0,0))
-logistic <-n.vec * log.function(n.vec, r, K)
-allee <- n.vec * allee.function(n.vec, 1.5*r, K, A)
+logistic <-n.list * log.function(n.list, r, K)
+allee <- n.list * allee.function(n.list, 1.5*r, K, A)
 
-plot(n.vec,
+plot(n.list,
      logistic,
      type = "l",
      lwd =3,
@@ -66,10 +67,11 @@ plot(n.vec,
      cex.lab = 1.25)
 
 mtext(side = 2, text = expression(frac(paste(Delta, N), paste(Delta, t))), line = 3, las =0, cex = 1.5)
-lines(n.vec,
+lines(n.list,
       allee,
       lwd = 3,
       col = "black")
 
 abline (h = 0, lty = "dotted", col = "black", lwd =3, xpd = F)
+if(viewcode) cat(readLines(con = "txt/fig2.6and7.txt"), sep = "\n")
 }

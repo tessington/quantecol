@@ -1,16 +1,16 @@
-fig2.3and4 <- function() {
+fig2.3and4 <- function(viewcode = F) {
   #' The structure of the Logistic Model
   #'
   #' Generate figures 2.3 and 2.4 showing the assumed linear relationship between per-capita growth rate and population density, and the resulting relationship between Delta N Delta t and Population size.
   #'
-  #'
+  #' @param viewcode TRUE or FALSE (default) indicating whether to print the function code
   #' @export
   #'
   #' @examples
-  #' #view plotting commands
-  #' print(fig2.3and4)
   #' # generate plot
   #' fig2.3and4()
+  #' # View plotting code
+  #' fig2.3and4(viewcode = TRUE)
   # first generate Figure 2.3
   # specify parameters
   r = 0.5
@@ -74,7 +74,7 @@ fig2.3and4 <- function() {
   plot.new()
   Nlist <- 0:100
   log.plot <- Nlist * r * (1 - Nlist / K)
-  par(las = 1, mar = c(5,7,5,5), mfrow = c(1,2))
+  par(las = 1, mar = c(4,7,2,2), mfrow = c(1,2))
 
   plot(
     Nlist,
@@ -117,7 +117,7 @@ fig2.3and4 <- function() {
     cex.axis = 1,
     cex.lab = 1.35
   )
-
+  if(viewcode) cat(readLines(con = "txt/fig2.3and4.txt"), sep = "\n")
 
 }
 

@@ -4,7 +4,10 @@
 \alias{fig8.8}
 \title{Fit Survival Function to Goby Data}
 \usage{
-fig8.8()
+fig8.8(viewcode = FALSE)
+}
+\arguments{
+\item{viewcode}{TRUE or FALSE (default) indicating whether to print the function code}
 }
 \value{
 a list object containing the maximum likelihood estimate of pmax and alpha
@@ -13,13 +16,9 @@ a list object containing the maximum likelihood estimate of pmax and alpha
 This function generates Figure 8.8 by estimating the maximum likelihood parameter values of the survival function in Eq. 8.10
 }
 \examples{
-#view  commands
-print(fig8.8)
 # generate plot in Fig 8.8 and get maximum likelihood estimated
 fit <- fig8.8()
 print(fit)
-$pmax.mle
-[1] 0.5002728
-$alpha.mle
-[1] 0.01271631
+#view  commands
+fig8.8(viewcode = TRUE)
 }

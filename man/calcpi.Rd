@@ -4,12 +4,12 @@
 \alias{calcpi}
 \title{Monte carlo simulation to estimate pi.}
 \usage{
-calcpi(n.iters = 1e+05, printfun = F)
+calcpi(n.iters = 1e+05, viewcode = F)
 }
 \arguments{
 \item{n.iters}{the number of Monte Carlo iterations.  Must exceed 1000.}
 
-\item{printfun}{TRUE or FALSE (default) indicating whether to print the function code}
+\item{viewcode}{TRUE or FALSE (default) indicating whether to print the function code}
 }
 \value{
 Monte Carlo based estimate of pi

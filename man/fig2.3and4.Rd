@@ -4,14 +4,17 @@
 \alias{fig2.3and4}
 \title{The structure of the Logistic Model}
 \usage{
-fig2.3and4()
+fig2.3and4(viewcode = F)
+}
+\arguments{
+\item{viewcode}{TRUE or FALSE (default) indicating whether to print the function code}
 }
 \description{
 Generate figures 2.3 and 2.4 showing the assumed linear relationship between per-capita growth rate and population density, and the resulting relationship between Delta N Delta t and Population size.
 }
 \examples{
-#view plotting commands
-print(fig2.3and4)
 # generate plot
 fig2.3and4()
+# View plotting code
+fig2.3and4(viewcode = TRUE)
 }

@@ -1,0 +1,89 @@
+thedata <- killerwhales
+ndata <- nrow(thedata)
+
+Nt <- thedata[-ndata,2]
+Ntplus1 <- thedata[-1,2]
+
+plot(Nt, Ntplus1,
+     type ="p",
+     pch = 21,
+     bg = "black",
+     xlab = expression("N"["t"]),
+     ylab = expression("N"["t+1"]),
+     xlim =c(0,105),
+     ylim = c(0,105),
+     las =1,
+     yaxs = "i",
+     xaxs = "i")
+
+
+fitdi <- function(pars, thedata){
+  lambda <- pars[1]
+  ndata <- nrow(thedata)
+  n.t <- thedata[-ndata,2]
+  ntplus.one.hat <- n.t * lambda
+  ntplus.one.obs <- thedata[-1,2]
+
+  nll <- -sum(dpois(ntplus.one.obs, ntplus.one.hat, log = T))
+
+  return(nll)
+}
+
+
+fit.logistic <- function(pars, thedata){
+  r <- exp(pars[1])
+  k <- exp(pars[2])
+  ndata <- nrow(thedata)
+  n.t <- thedata[-ndata,2]
+  ntplus.one.obs<- thedata[-1, 2]
+  ntplus.one.hat <- n.t + n.t* r * (1 - n.t / k)
+  nll <- - sum(dpois(ntplus.one.obs, ntplus.one.hat, log = T))
+  return(nll)
+}
+
+fit.bh <- function(pars, thedata) {
+  alpha <- exp(pars[1])
+  beta <- exp(pars[2])
+  ndata <- nrow(thedata)
+  n.t <- thedata[-ndata,1]
+  n.t <- thedata[-ndata,2]
+  ntplus.one.obs<- thedata[-1, 2]
+  ntplus.one.hat <- n.t + n.t* alpha / ( 1 + n.t * beta)
+  nll <- - sum(dpois(ntplus.one.obs, ntplus.one.hat, log = T))
+  return(nll)
+
+
+}
+
+startpars <- 1.002
+# solve density independent model
+solve.di <- optim(par = startpars,
+    fn = fitdi,
+    thedata = thedata,
+    method = "Brent",
+    lower = 0.5,
+    upper = 1.1
+  )
+# solve logistic model
+startpars <- c(log(0.002), 4)
+solve.logistic <-  optim(par = startpars,
+    fn = fit.logistic,
+    thedata = thedata,
+    method = "BFGS"
+  )
+
+
+# solve beverton holt model
+startpars <- c(log(0.002), log(.01))
+solve.bh <-optim(par = startpars,
+    fn = fit.bh,
+    thedata = thedata,
+    method = "BFGS"
+  )
+# create AIC table
+AICtable <- matrix(NA, nrow = 3, ncol = 3)
+rownames(AICtable) <- c("Density independent", "Logistic", "Beverton-Holt")
+colnames(AICtable) <- c("NLL", "AIC", "Delta AIC")
+AICtable[,1] <- c(solve.di$value, solve.logistic$value, solve.bh$value)
+AICtable[,2] <- 2 * AICtable[,1] + 2 * c(1,2,2)
+AICtable[,3] <- AICtable[,2] - min(AICtable[,2])

@@ -4,14 +4,17 @@
 \alias{fig5.7}
 \title{Stochastic Density Dependent Model}
 \usage{
-fig5.7()
+fig5.7(viewcode = FALSE)
+}
+\arguments{
+\item{viewcode}{TRUE or FALSE (default) indicating whether to print the function code}
 }
 \description{
 Generate Figure 5.7 that illustrates 25 random model runs of the Beverton-Holt density dependent model, where the parameters alpha and d (death rate) vary annually following a normal distribution.
 }
 \examples{
-# View the code
-print(fig5.7)
 # Recreate a version of figure 5.7
 fig5.7()
+# View the code
+fig5.7(viewcode = TRUE)
 }

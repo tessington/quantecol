@@ -1,0 +1,42 @@
+  thedata <- 2
+  t <- 20
+  nll.fun <-
+    function(r, thedata, t)
+      - sum(dpois(
+        x = thedata,
+        lambda = r * t,
+        log = TRUE
+      ))
+  # list of r to use
+  r.list <- seq(from = 0.01, to = 0.5, by = 0.0025)
+  # empty array to hold output
+  nll.list <- rep(x = NA, times = length(r.list))
+  # cycle through r's, calculate negative log likelihood for each
+  for (i in 1:length(nll.list)) {
+    nll.list[i] <- nll.fun(r.list[i], thedata, t)
+  }
+
+  min.nll <- min(nll.list)
+  r.mle <- r.list[nll.list == min.nll]
+  target.nll <- min.nll + 1.92
+  ci.index <- which(nll.list <= target.nll)
+  lb <- r.list[min(ci.index)]
+  ub <- r.list[max(ci.index)]
+
+  # plot results
+  plot(
+    r.list,
+    nll.list,
+    type = "l",
+    lwd = 3,
+    xlim = c(0, 0.5),
+    ylim = c(0, 8),
+    ylab = "Negative log-likelihood",
+    xlab = "Geoduck density (r)",
+    xaxs = "i",
+    yaxs = "i"
+  )
+  lines(c(lb, ub), rep(target.nll, 2),
+        col = "gray",
+        lwd = 3)
+  abline(h = min.nll, lty = "dashed", lwd = 3)

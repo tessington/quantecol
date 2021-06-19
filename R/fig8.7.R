@@ -1,15 +1,17 @@
-fig8.7 <- function() {
+fig8.7 <- function(viewcode = FALSE) {
   #' Maximum Likelihood Estimate of Catchability
   #'
-  #' Generate Figure 8.78 that shows negative log-likelihood for different values of Hector dolphin catchability (q), and return the maximum likelihood estimate and associated confidence interval
+  #' Generate Figure 8.7 that shows negative log-likelihood for different values of Hector dolphin catchability (q), and return the maximum likelihood estimate and associated confidence interval
+  #' @param viewcode TRUE or FALSE (default) indicating whether to print the function code
   #' @return a list object containing maximum likelihood estimat and confidence interval
   #' @export
   #' @examples
-  #' # View the code
-  #' print(fig8.7)
   #' # Recreate fig 8.8 and assign output to object 'fit'
   #' fit <- fig8.7()
   #' print(fit)
+  #' # View the code
+  #' fig8.7(viewcode = TRUE)
+
 
 
 k <- c(79, 70)
@@ -45,6 +47,6 @@ plot(qlist, nll.list,
      las = 1
 )
 lines(c(lb, ub), rep(target.nll, 2), lwd = 3, col = "gray")
-
+if(viewcode) cat(readLines(con = "txt/fig8.7.txt"), sep = "\n")
 return(list(q.mle = q.mle, ci = c(lb, ub)))
 }

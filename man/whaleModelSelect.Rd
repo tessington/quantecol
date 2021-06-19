@@ -4,7 +4,10 @@
 \alias{whaleModelSelect}
 \title{Model Selection: Population Dynamics of Killer Whales}
 \usage{
-whaleModelSelect()
+whaleModelSelect(viewcode = FALSE)
+}
+\arguments{
+\item{viewcode}{TRUE or FALSE (default) indicating whether to print the function code  #'}
 }
 \value{
 a matrix containing negative log likelihood, AIC, and delta AIC for each model
@@ -13,9 +16,9 @@ a matrix containing negative log likelihood, AIC, and delta AIC for each model
 This function generates Figure 9.3 and table 9.1 by fitting a density independent, a logistic, and a beverton-holt model to the southern resident killer whale population counts.  This illustrates the estimation of population parameters assuming "process" error, and the calculation of AIC and delta AIC
 }
 \examples{
-#view  commands
-print(whale_model_select)
 # generate plot in Fig 9.3 and get table 9.1 returned
 AIC.table <- whale_model_select()
 print(AIC.table)
+#view  commands
+whale_model_select(viewcode = TRUE)
 }

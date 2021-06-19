@@ -1,0 +1,40 @@
+# Initialize parameters
+lambda=1.05
+years <-0:20
+
+# Calculate Nt for lambda = 1.05
+N.t.105<-10*lambda^years
+
+# Calculate Nt for lambda = 0.95
+lambda=0.95
+N.t.095<-10*lambda^years
+
+# set up plotting: axis limits
+xlims<-c(0,20)
+ylims<-c(0,30)
+# set graphics parameter "las" to 1
+par(las = 1)
+# make plot of time vs Nt for lambda = 1.05
+plot(years,
+  N.t.105,
+  type = "l",
+  col = "black",
+  lwd = 2,
+  xlab = "Time",
+  ylab = expression(paste("N"["t"])),
+  xlim = xlims,
+  ylim = ylims
+)
+# add plot for time vs. Nt when lambda = 0.95
+lines(years, N.t.095,
+      col = "black",
+      lwd = 2)
+# add horizontal line to denote case when lambda = 1
+abline(h = 10,
+       col = "black",
+       lwd = 2)
+
+# add text to plot
+text(x = 10, y= 17, labels = parse(text=expression(paste(lambda,">1",sep=""))))
+text(x = 10, y= 11, labels = parse(text=expression(paste(lambda,"=1",sep=""))))
+text(x = 10, y= 5, labels = parse(text=expression(paste(lambda,"<1",sep=""))))

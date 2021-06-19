@@ -4,7 +4,10 @@
 \alias{fig8.3}
 \title{Poison Maximum Likelihood Estimation, single observation}
 \usage{
-fig8.3()
+fig8.3(viewcode = F)
+}
+\arguments{
+\item{viewcode}{TRUE or FALSE (default) indicating whether to print the function code}
 }
 \value{
 a list object containing the maximum likelihood estimate of r and the confidence interval
@@ -13,8 +16,8 @@ a list object containing the maximum likelihood estimate of r and the confidence
 This function generates  Figure 8.3 and returns the maximum likelihood estimate of r and the confidence interval
 }
 \examples{
-#view  commands
-print(fig8.3)
 # generate plot shown in Fig 8.3
 fig8.3()
+#view  commands
+fig8.3(viewcode = F)
 }

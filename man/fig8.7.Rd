@@ -4,18 +4,21 @@
 \alias{fig8.7}
 \title{Maximum Likelihood Estimate of Catchability}
 \usage{
-fig8.7()
+fig8.7(viewcode = FALSE)
+}
+\arguments{
+\item{viewcode}{TRUE or FALSE (default) indicating whether to print the function code}
 }
 \value{
 a list object containing maximum likelihood estimat and confidence interval
 }
 \description{
-Generate Figure 8.78 that shows negative log-likelihood for different values of Hector dolphin catchability (q), and return the maximum likelihood estimate and associated confidence interval
+Generate Figure 8.7 that shows negative log-likelihood for different values of Hector dolphin catchability (q), and return the maximum likelihood estimate and associated confidence interval
 }
 \examples{
-# View the code
-print(fig8.7)
 # Recreate fig 8.8 and assign output to object 'fit'
 fit <- fig8.7()
 print(fit)
+# View the code
+fig8.7(viewcode = TRUE)
 }

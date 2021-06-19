@@ -4,10 +4,10 @@
 \alias{fig3.1}
 \title{Structured population Demo}
 \usage{
-fig3.1()
+fig3.1(viewcode = F)
 }
 \arguments{
-\item{n.iters}{the number of Monte Carlo iterations.  Must exceed 1000.}
+\item{TRUE}{or FALSE (default) indicating whether to print the function code}
 }
 \value{
 A list containing population growth rate and stable age distribution calculated via simulation and via eigenvalue / eigenvector analysis, elasticities, and a plot of transitent and stable model dynamics
@@ -16,9 +16,6 @@ A list containing population growth rate and stable age distribution calculated 
 Runs several examples of structured population analysis based on the 5-age-c.ass model illustrated in Chapter 3.  This includes the coding of structured models using both matrix and non-matrix notation, and use of eigenvalues and eigenvectors.  Returns the graphic in Figure 3.1.
 }
 \examples{
-# View the code
-print(fig3.1)
-
 # Run the code, and print output at console
 fig3.1()
 
@@ -26,6 +23,7 @@ fig3.1()
 output <- fig3.1()
 print(output)
 
-
+# View the code
+fig3.1(viewcode = T)
 
 }

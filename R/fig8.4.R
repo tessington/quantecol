@@ -1,22 +1,18 @@
-fig8.4 <- function() {
+fig8.4 <- function(viewcode = FALSE) {
 
   #' Poison Maximum Likelihood Estimation, multiple observations
   #'
   #' This function generates  Figure 8.4 and returns the maximum likelihood estimate of r and the confidence interval
-  #'
+  #' @param viewcode TRUE or FALSE (default) indicating whether to print the function code
   #' @return a list object containing the maximum likelihood estimate of r and the confidence interval
   #' @export
   #'
   #' @examples
-  #' #view  commands
-  #' print(fig8.4)
-  #' # generate plot shown in Fig 8.4
+  #' # generate plot shown in Fig 8.4, and return fit and confidence interval
   #' fig8.4()
-  #' $mle
-  #' [1] 0.2
-  #' $ci
-  #' [1] 0.12 0.31
-  #'
+  #' # View code
+  #' fig8.4(viewcode = TRUE)
+
   thedata <- c(0, 3, 6, 7)
   t <- 20
   nll.fun <-
@@ -59,5 +55,6 @@ fig8.4 <- function() {
         col = "gray",
         lwd = 3)
   abline(h = min.nll, lty = "dashed", lwd = 3)
+  if(viewcode) cat(readLines(con = "txt/fig8.4.txt"), sep = "\n")
   return(list(mle = r.mle, ci = c(lb, ub)))
 }

@@ -1,13 +1,14 @@
-fig5.7 <- function() {
+fig5.7 <- function(viewcode = FALSE) {
   #' Stochastic Density Dependent Model
   #'
   #' Generate Figure 5.7 that illustrates 25 random model runs of the Beverton-Holt density dependent model, where the parameters alpha and d (death rate) vary annually following a normal distribution.
+  #' @param viewcode TRUE or FALSE (default) indicating whether to print the function code
   #' @export
   #' @examples
-  #' # View the code
-  #' print(fig5.7)
   #' # Recreate a version of figure 5.7
   #' fig5.7()
+  #' # View the code
+  #' fig5.7(viewcode = TRUE)
 
 
 
@@ -58,4 +59,5 @@ for (i in 2:nyears) Nt[i] <-  Nt[i-1]*(alpha_bar / (1 + beta*Nt[i-1]) + (1-d_bar
 lines(1:nyears, Nt,
       lwd = 3,
       col = "black")
+if(viewcode) cat(readLines(con = "txt/fig5.7.txt"), sep = "\n")
 }

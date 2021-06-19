@@ -1,15 +1,14 @@
-fig4.1 <- function(stability = "stable") {
+fig4.1 <- function(stability = "stable", viewcode = FALSE) {
   #' Stability of multi-variable models
   #'
   #' This function uses a continuous-time lotka-volterra competition model to introduce the concept of stability, how to use the Adams-Bashford method to simulate a model with differential equations, and the calculation of Jacobian matrices and dominant eigenvalue.  The user can ask for a "stable" model configuration or an "unstable" model configuration
   #'
   #' @param stability character string that is either "stable" or "unstable"
+  #' @param viewcode TRUE or FALSE (default) indicating whether to print the function code
   #' @return a list object containing jacobian matrix and dominant eigenvalue, and generates either panel of figure 4.1
   #' @export
   #'
   #' @examples
-  #' #view  commands
-  #' print(fig4.1)
   #' # generate plot with a stable model
   #' fig4.1("stable")
   #' # generate a plot with an unstable model
@@ -17,7 +16,10 @@ fig4.1 <- function(stability = "stable") {
   #' # assign output to an object and view eigenvalue
   #' output <- fig4.1("unstable")
   #' output$eigenvalue
-  #' [1] 0.05553361
+  #' #view  commands
+  #' fig4.1(viewcode = TRUE)
+
+  #'
 
 
 
@@ -29,12 +31,8 @@ run.dxydt<-function(Xstart,
                     perturb = c(1.05,1),
                     n.years = 100,
                     deltat = 0.1) {
-  rx <- parslist$rx
-  Kx<-parslist$Kx
-  alpha<-parslist$alpha
-  ry <- parslist$ry
-  Ky <- parslist$Ky
-  beta<-parslist$beta
+  # This command takes all of elements in the list parslist and loads them as individual objects in the function environment
+  list2env(parslist, envir = environment())
 
   timelist <- seq(0, n.years, by = deltat)
   n.steps<-length(timelist)
@@ -152,7 +150,7 @@ ev <- eigen(A)$values
 # find maximum real part of eigenvalue
 real.ev <- max(Re(ev))
 dom.eigenvalue <- ev[Re(ev)==real.ev]
-
+if(viewcode) if(viewcode) cat(readLines(con = "txt/fig4.1.txt"), sep = "\n")
 return(list(Jacobian = A, eigenvalue = dom.eigenvalue))
 
 

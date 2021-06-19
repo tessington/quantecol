@@ -4,10 +4,12 @@
 \alias{killerWhaleExtinction}
 \title{Extinction risk of Southern Resident Killer Whales}
 \usage{
-killerWhaleExtinction(model.type = "base")
+killerWhaleExtinction(model.type = "base", viewcode = FALSE)
 }
 \arguments{
 \item{model.type}{is character that is either 'base', 'autocorrelation', or 'uncertainty', associated with the three scenarios in Table 5.1.}
+
+\item{viewcode}{TRUE or FALSE (default) indicating whether to print the function code}
 }
 \value{
 the estimated probability of extinction over the next 100 years, and plots Figures 5.5 and 5.6.
@@ -21,10 +23,10 @@ Perform simulations to evaluate the risk that southern resident killer whales wi
 }
 }
 \examples{
-# View the code
-print(killerWhaleExtinction)
 # Run the base model
 extinct.base <- killerWhaleExtinction(model.type = "base")
 # Run the uncertainty model
 extinct.uncertainty <- killerWhaleExtinction(model.type = "uncertainty")
+ # View the code
+killerWhaleExtinction(viewcode = TRUE)
 }

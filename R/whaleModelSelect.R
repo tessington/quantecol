@@ -1,17 +1,17 @@
-whaleModelSelect <- function() {
+whaleModelSelect <- function(viewcode = FALSE) {
   #' Model Selection: Population Dynamics of Killer Whales
   #'
   #' This function generates Figure 9.3 and table 9.1 by fitting a density independent, a logistic, and a beverton-holt model to the southern resident killer whale population counts.  This illustrates the estimation of population parameters assuming "process" error, and the calculation of AIC and delta AIC
-  #'
+  #' @param viewcode TRUE or FALSE (default) indicating whether to print the function code  #'
   #' @return a matrix containing negative log likelihood, AIC, and delta AIC for each model
   #' @export
-  #'
   #' @examples
-  #' #view  commands
-  #' print(whale_model_select)
   #' # generate plot in Fig 9.3 and get table 9.1 returned
   #' AIC.table <- whale_model_select()
   #' print(AIC.table)
+  #' #view  commands
+  #' whale_model_select(viewcode = TRUE)
+
 
 thedata <- killerwhales
 ndata <- nrow(thedata)
@@ -101,6 +101,8 @@ colnames(AICtable) <- c("NLL", "AIC", "Delta AIC")
 AICtable[,1] <- c(solve.di$value, solve.logistic$value, solve.bh$value)
 AICtable[,2] <- 2 * AICtable[,1] + 2 * c(1,2,2)
 AICtable[,3] <- AICtable[,2] - min(AICtable[,2])
+
+if(viewcode) cat(readLines(con = "txt/whaleModelSelect.txt"), sep = "\n")
 return(AICtable)
 
 }

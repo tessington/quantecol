@@ -4,10 +4,12 @@
 \alias{fig9.4}
 \title{Fit Song Sparrow Reproductive Success}
 \usage{
-fig9.4(pmf = "poisson")
+fig9.4(pmf = "poisson", viewcode = FALSE)
 }
 \arguments{
 \item{pmf}{a character string that is either "poisson" or "pmf", indicating the probabiilty function to be used in model fitting}
+
+\item{viewcode}{TRUE or FALSE (default) indicating whether to print the function code}
 }
 \value{
 A matrix showing negative log likelihood, AIC, and delta AIC
@@ -16,10 +18,10 @@ A matrix showing negative log likelihood, AIC, and delta AIC
 This function generates Figure 9.4 by estimating the maximum likelihood parameter values of the ricker function, and plotting the best fit and generating an AIC table showing comparison between the Ricker function and a density independent function.  The default probability mass function is Poisson.
 }
 \examples{
-#view  commands
-print(fig9.4)
 # generate plot in Fig 9.4 and get AIC table
 fig9.4()
 # Repeat using negative binomial model
 fig9.4(pmf = "nbinom")
+#' #view  commands
+fig9.4(viewcode = TRUE)
 }

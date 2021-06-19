@@ -1,11 +1,11 @@
-calcpi <- function(n.iters = 100000, printfun = F) {
+calcpi <- function(n.iters = 100000, viewcode = F) {
   #' Monte carlo simulation to estimate pi.
   #'
   #'
   #' Demonstration of example in 14.3.1 "What is pi".  This uses Monte Carlo simulation uses the ratio of randomly drawn points that are in a circle of radius r to a square with length r.
   #'
   #' @param n.iters the number of Monte Carlo iterations.  Must exceed 1000.
-  #' @param printfun TRUE or FALSE (default) indicating whether to print the function code
+  #' @param viewcode TRUE or FALSE (default) indicating whether to print the function code
   #'
   #' @return Monte Carlo based estimate of pi
   #' @export
@@ -35,6 +35,6 @@ for (i in 1:n.iters) {
   output[i,2] <- in.square(x,y)
 }
 
-if(printfun) cat(readLines(con = "txt/calcpi.txt"), sep = "\n")
+if(viewcode) cat(readLines(con = "txt/calcpi.txt"), sep = "\n")
 return(sum(output[,1]) / sum(output[,2]))
 }

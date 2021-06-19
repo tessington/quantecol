@@ -1,7 +1,7 @@
 fig5.3 <- function() {
   #' Effect of Stochasticity on Average Population Size
   #'
-  #' Demonstration of how variability in population growth rate leads to reduced average population size (Figure 5.2). In each simulation, annual population growth rate, lambda, varies randomly within a specified range.  This is repeated many times, and the average over each simulation is plotted.
+  #' Demonstration of how variability in population growth rate leads to reduced average population size (Figure 5.3). In each simulation, annual population growth rate, lambda, varies randomly within a specified range.  This is repeated many times, and the average over each simulation is plotted.
   #'
   #' @export
   #' @examples

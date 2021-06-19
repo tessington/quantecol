@@ -10,7 +10,7 @@ fig4.1(stability = "stable")
 \item{stability}{character string that is either "stable" or "unstable"}
 }
 \value{
-a list object containing jacobian matrix and dominant eigenvalue, and generates Figure 4.2 and 4.3
+a list object containing jacobian matrix and dominant eigenvalue, and generates either panel of figure 4.1
 }
 \description{
 This function uses a continuous-time lotka-volterra competition model to introduce the concept of stability, how to use the Adams-Bashford method to simulate a model with differential equations, and the calculation of Jacobian matrices and dominant eigenvalue.  The user can ask for a "stable" model configuration or an "unstable" model configuration

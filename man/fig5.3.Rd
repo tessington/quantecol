@@ -7,7 +7,7 @@
 fig5.3()
 }
 \description{
-Demonstration of how variability in population growth rate leads to reduced average population size (Figure 5.2). In each simulation, annual population growth rate, lambda, varies randomly within a specified range.  This is repeated many times, and the average over each simulation is plotted.
+Demonstration of how variability in population growth rate leads to reduced average population size (Figure 5.3). In each simulation, annual population growth rate, lambda, varies randomly within a specified range.  This is repeated many times, and the average over each simulation is plotted.
 }
 \examples{
 # View the code

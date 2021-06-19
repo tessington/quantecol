@@ -11,7 +11,7 @@ Generate Figure 5.7 that illustrates 25 random model runs of the Beverton-Holt d
 }
 \examples{
 # View the code
-print(lotka_volterra)
+print(fig5.7)
 # Recreate a version of figure 5.7
 fig5.7()
 }

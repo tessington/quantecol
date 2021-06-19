@@ -5,7 +5,7 @@ fig5.8 <- function() {
   #' @export
   #' @examples
   #' View code
-  #' print(fig5.8())
+  #' print(fig5.8)
   #' Re-create a version of Figure 5.8
   #' fig5.8()
 

@@ -4,10 +4,12 @@
 \alias{calcpi}
 \title{Monte carlo simulation to estimate pi.}
 \usage{
-calcpi(n.iters = 1e+05)
+calcpi(n.iters = 1e+05, printfun = F)
 }
 \arguments{
 \item{n.iters}{the number of Monte Carlo iterations.  Must exceed 1000.}
+
+\item{printfun}{TRUE or FALSE (default) indicating whether to print the function code}
 }
 \value{
 Monte Carlo based estimate of pi
@@ -20,6 +22,8 @@ Demonstration of example in 14.3.1 "What is pi".  This uses Monte Carlo simulati
 pi.est <- calcpi(n.iters = 1000)
 # get a more robust estimate, but very slow
 pi.est <- calcpi(n.iters = 10000000)
+# run and view function code
+pi.est <- calc.pi(printfun = TRUE)
 
 
 

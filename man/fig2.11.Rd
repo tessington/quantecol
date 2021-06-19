@@ -14,9 +14,9 @@ Generate figures 2.11 through 2.16 by specifying the maximum rate of population 
 }
 \examples{
 #view plotting commands
-print(fig2.1X)
+print(fig2.11)
 # generate plot with "typical" dynamics
-fig2.1X(r = 0.5)
+fig2.11(r = 0.5)
 # generate plot with "complex" dynamics
-fig2.1X(r = 2.1)
+fig2.11(r = 2.1)
 }

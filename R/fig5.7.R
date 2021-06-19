@@ -5,7 +5,7 @@ fig5.7 <- function() {
   #' @export
   #' @examples
   #' # View the code
-  #' print(lotka_volterra)
+  #' print(fig5.7)
   #' # Recreate a version of figure 5.7
   #' fig5.7()
 

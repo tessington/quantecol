@@ -60,7 +60,7 @@ fit.bh <- function(pars, thedata) {
   alpha <- exp(pars[1])
   beta <- exp(pars[2])
   ndata <- nrow(thedata)
-  n.t <- data[-ndata,1]
+  n.t <- thedata[-ndata,1]
   n.t <- thedata[-ndata,2]
   ntplus.one.obs<- thedata[-1, 2]
   ntplus.one.hat <- n.t + n.t* alpha / ( 1 + n.t * beta)

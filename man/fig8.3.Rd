@@ -17,12 +17,4 @@ This function generates  Figure 8.3 and returns the maximum likelihood estimate 
 print(fig8.3)
 # generate plot shown in Fig 8.3
 fig8.3()
-$mle
-[1] 0.1
-$ci
-[1] 0.0175 0.3075
-
-# generate a plot with an unstable model
-fig4.1("unstable")
-
 }

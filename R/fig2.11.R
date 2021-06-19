@@ -10,11 +10,11 @@ fig2.11 <- function(r) {
   #'
   #' @examples
   #' #view plotting commands
-  #' print(fig2.1X)
+  #' print(fig2.11)
   #' # generate plot with "typical" dynamics
-  #' fig2.1X(r = 0.5)
+  #' fig2.11(r = 0.5)
   #' # generate plot with "complex" dynamics
-  #' fig2.1X(r = 2.1)
+  #' fig2.11(r = 2.1)
 
 
 K=100

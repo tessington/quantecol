@@ -11,7 +11,7 @@ Compare scenarios shown in Figure 5.8 where (1) stochasticity caused a populatio
 }
 \examples{
 View code
-print(fig5.8())
+print(fig5.8)
 Re-create a version of Figure 5.8
 fig5.8()
 }

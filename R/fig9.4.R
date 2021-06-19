@@ -111,7 +111,7 @@ if(pmf == "nbinom") {
   npars <- c(2,3)
 }
 
-
+reset_graphics_par()
 # Plot the data
 plot(n.female, n.offspring,
      type = "p",

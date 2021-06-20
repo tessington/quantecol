@@ -66,9 +66,8 @@ normal.plot<-function(mu,sigma) {
 
   x.poly<-seq(lower.area,upper.area,length.out=100)
   p.poly<-dnorm(x.poly,mean=mu,sd=sigma)
-  area.curve<-pnorm(upper.area,mean=mu,sd=sigma)-pnorm(lower.area,mean=mu,sd=sigma)
   polygon(c(x.poly,rev(x.poly)),c(p.poly,rep(0,length(p.poly))),border="gray50",lwd=0.1,col="gray50")
-  text(x=0,y=.125,labels=substitute(sigma==a,list(a=sigma)),pos=4)
+  text(x=10,y=.085,labels=substitute(sigma==a,list(a=sigma)),pos=4)
   print(area.curve)
 }
 par(mfrow = c(1,2), oma = c(0,0,0,0),mar = c(4,4,1,0.5))

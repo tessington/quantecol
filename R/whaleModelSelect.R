@@ -18,7 +18,7 @@ ndata <- nrow(thedata)
 
 Nt <- thedata[-ndata,2]
 Ntplus1 <- thedata[-1,2]
-
+reset_graphics_par()
 plot(Nt, Ntplus1,
      type ="p",
      pch = 21,

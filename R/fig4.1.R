@@ -21,7 +21,9 @@ fig4.1 <- function(stability = "stable", viewcode = FALSE) {
 
   #'
 
-
+#error checking
+  stability <- tolower(stability)
+  if(!stability %in% c("stable", "unstable")) stop("function input stability must be either 'stable' or 'unstable'")
 
 # function to run the Adams - Bashford method to simulate the differential equations
 run.dxydt<-function(Xstart,

@@ -10,7 +10,7 @@ fig2.3and4(viewcode = F)
 \item{viewcode}{TRUE or FALSE (default) indicating whether to print the function code}
 }
 \description{
-Generate figures 2.3 and 2.4 showing the assumed linear relationship between per-capita growth rate and population density, and the resulting relationship between Delta N Delta t and Population size.
+Generate figures 2.3 and 2.4 (as separate plots in the Plots window) showing the assumed linear relationship between per-capita growth rate and population density, and the resulting relationship between Delta N  /Delta t and Population size.  Each plot will appear as a new plot in the Rstudio Plot Window.  Click on the arrow icon in the Plot window to move forward or backward to see the two plots
 }
 \examples{
 # generate plot

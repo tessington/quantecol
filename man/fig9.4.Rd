@@ -7,7 +7,7 @@
 fig9.4(pmf = "poisson", viewcode = FALSE)
 }
 \arguments{
-\item{pmf}{a character string that is either "poisson" or "pmf", indicating the probabiilty function to be used in model fitting}
+\item{pmf}{a character string that is either "poisson" or "nbinom", indicating the probabiilty function to be used in model fitting}
 
 \item{viewcode}{TRUE or FALSE (default) indicating whether to print the function code}
 }

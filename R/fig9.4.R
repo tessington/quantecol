@@ -3,7 +3,7 @@ fig9.4 <- function(pmf = "poisson", viewcode = FALSE) {
   #'
   #' This function generates Figure 9.4 by estimating the maximum likelihood parameter values of the ricker function, and plotting the best fit and generating an AIC table showing comparison between the Ricker function and a density independent function.  The default probability mass function is Poisson.
   #'
-  #' @param pmf a character string that is either "poisson" or "pmf", indicating the probabiilty function to be used in model fitting
+  #' @param pmf a character string that is either "poisson" or "nbinom", indicating the probabiilty function to be used in model fitting
   #' @param viewcode TRUE or FALSE (default) indicating whether to print the function code
   #' @return A matrix showing negative log likelihood, AIC, and delta AIC
   #' @export

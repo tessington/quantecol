@@ -1,13 +1,4 @@
 runge.kutta <- function(Xstart, modelpars, fun, deltat, n.years) {
-  #' 4th Order Runge-Kutta
-  #'
-  #' This function applies the 4th order Runge-Kutta method to solve a continuous time series of differential equations.  This function is useful for demonstration, but for practical purposes you might find it better to use functions in the deSolve package
-  #'
-  #' @param  Xstart is a vector or array of the starting values of the ODE
-  #' @param modelpars is a list object with all model parameters
-  #' @param fun is the name of the function that calculates dXdt, where X is a vector of state variables
-  #' @param timesteps is a vector of time increments starting at t=0
-  #' @return matrix with time in first column and state variables in remaining columns
 
   #Create a function to apply the RK for one time step
   run.kutta.fun <- function(X, modelpars, fun = fun) {

@@ -58,5 +58,47 @@ fig5.4 <- function(mu = 0.05, sigma = 0.05, viewcode = FALSE) {
           lwd = 3,
           col = cols[i])
   }
-  if(viewcode) cat(readLines(con = "txt/fig5.4.txt"), sep = "\n")
+  if(viewcode) cat('  # initialize model run
+  n.years <- 40
+  n.start <- 10
+
+  output <- matrix(NA, nrow = n.years, ncol = 20)
+
+  # Run stochastic model
+  for (i in 1:20) {
+    rs <- rnorm(n.years, mu, sigma)
+    nt <- rep(NA, times = n.years)
+    nt[1] <- n.start
+    for (t in 2:n.years)
+      nt[t] <- nt[t - 1] * exp(rs[t - 1])
+    output[, i] <- nt
+  }
+
+
+  # make plot
+  # get 20 colors from cividis color palette
+  cols <- viridis::cividis(20)
+
+
+  plot(
+    1:n.years,
+    output[, 1],
+    type = "l",
+    lwd = 3,
+    col = cols[1],
+    xlab = "Years",
+    ylab = "Population Size",
+    xaxs = "i",
+    yaxs = "i",
+    ylim = c(0,120),
+    las = 1,
+    cex.lab = 1.25
+  )
+
+  for (i in 2:20) {
+    lines(1:n.years,
+          output[, i],
+          lwd = 3,
+          col = cols[i])
+  }', sep = "\n")
 }

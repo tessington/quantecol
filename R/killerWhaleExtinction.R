@@ -117,7 +117,101 @@ for (i in 1:n.iters) {
 }
 extinction = sum(output) / n.iters
 }
-if(viewcode) cat(readLines(con = "txt/killerWhaleExtinction.txt"), sep = "\n")
+if(viewcode) cat('thedata <- killerwhales
+year.list <- thedata[,1]
+alive <- thedata[,2]
+# plot the population dynamics
+plot(year.list, alive,
+     type = "l",
+     lwd = 2,
+     xlab = "Year",
+     ylab = "Population Size",
+     las = 1)
+
+points(year.list, alive,
+       pch = 21,
+       bg = "black")
+
+
+# get r_t
+rt <- log(alive[-1]/alive[-length(alive)])
+mu <- mean(rt)
+sigma <- sd(rt)
+se <- sigma / (length(rt))^(.5)
+
+## plot the r_t to see if there is autocorrelation
+plot(year.list[-length(year.list)], rt,
+     type = "l",
+     lwd = 2,
+     xlab = "Year",
+     ylab = expression(paste("r"["t"])),
+     las = 1)
+
+points(year.list[-length(year.list)], rt,
+       pch = 21,
+       bg = "black")
+
+# simulate model for a  policy relevant time, 100 years
+
+
+# function to run stochastic model and return 1 if extinct and 0 otherwise
+run.stochastic <- function(pars) {
+  with(pars, {
+    extinct.flag <- 0
+    vt <- rnorm(tmax, mean = 0, sd = sigma)
+    nt <- no
+    eta<- rt <- nt <- rep(NA, tmax)
+
+    eta[1] <- vt[1]
+    nt[1] <- no
+
+    for (t in 2:tmax) eta[t] <- rho * eta[t-1] + vt[t] * sqrt(1- rho^2)
+    rt <- rbar + eta
+    for (t in 2:tmax)  {
+      nt[t] <- nt[t-1] * exp(rt[t-1])
+      if (nt[t] <= nextinct) break
+    }
+    if (nt[t] <= nextinct) extinct.flag <- 1
+
+    return(extinct.flag)
+  })
+}
+
+# set up model configuration
+tmax.use <-  100
+rho.est <- 0.23
+rhat.use <- mu
+no.use <- alive[length(alive)]
+nextinct.use <- 40
+sigma.use <- sigma
+df <- length(rt) -1
+
+n.iters <- 10000
+output <- rep(NA, n.iters)
+
+# code to use if model.type is NOT "uncertainty"
+if(!model.type == "uncertainty"){
+if(model.type == "base") pars <- list(tmax = tmax.use, rho = 0, rbar = mu, sigma = sigma, no = no.use, nextinct = nextinct.use)
+if(model.type == "autocorrelation") pars <- list(tmax = tmax.use, rho = rho.est, rbar = mu, sigma = sigma, no = no.use, nextinct = nextinct.use)
+# run model n.iters times
+for (i in 1:n.iters)  output[i] <- run.stochastic(pars)
+extinction <- sum(output) / n.iters
+}
+
+# code to use if model.type is "uncertainty"
+if(model.type == "uncertainty") {
+output <- rep(NA, n.iters)
+rhat.2.use <- rnorm(n.iters, mu, se)
+sigma.2.use <- sqrt(sigma^2*rchisq(n.iters, df = df)/df)
+pars$rho <- 0
+for (i in 1:n.iters) {
+  pars$rbar <- rhat.2.use[i]
+  pars$sigma <- sigma.2.use[i]
+  output[i]<-run.stochastic(pars)
+}
+extinction = sum(output) / n.iters
+}
+', sep = "\n")
 return(extinction)
 
 

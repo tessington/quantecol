@@ -86,7 +86,80 @@ nb.soln <- optim(par = start.pars,
                  t = t,
                  method = "Nelder-Mead")
 
-if(viewcode) cat(readLines(con = "txt/fig8.5and6.txt"), sep = "\n")
+if(viewcode) cat('thedata <- c(2,1,7,1,2,5)
+t <- c(20, 20, 40, 40, 40,20)
+
+# set up values of r and k to cycle through
+rlist <- seq(from = 0.025, to = 0.30, by = 0.0025)
+klist <- seq(from = 0.5, to = 20, by =  0.5)
+
+
+nll.fun <- function(pars, thedata, t) {
+  r <- pars[1]
+  k <- pars[2]
+  nll <- -sum(dnbinom(thedata, size = k, mu = r * t, log = TRUE))
+  return(nll)
+}
+
+# matrix to hold output
+nll.matrix <- matrix(NA, nrow = length(rlist), ncol = length(klist))
+# loop through r and then k, retrieving the negative log likelihood for each combination
+for (i in 1:length(rlist)) {
+  r <- rlist[i]
+  for (j in 1:length(klist)) {
+    k <- klist[j]
+    nll.matrix[i,j] <- nll.fun(c(r,k), thedata, t)
+  }
+}
+
+# set color palette
+library(viridis)
+colors.2.use<-colorRampPalette(rev(plasma(16)),interpolate="spline")(40)
+# make color plot
+image(
+  y = klist,
+  x = rlist,
+  z = nll.matrix,
+  col = colors.2.use,
+  xlab = "r",
+  ylab = "k",
+  las = 1
+)
+
+# find likelihood profile for r
+r.profile <- apply(X = nll.matrix, MAR = 1, FUN = min)
+
+# plot likelihood profile
+plot(rlist, r.profile,
+     type = "l",
+     lwd = 3,
+     xlab = "r",
+     ylab = "Negative log-likelihood profile",
+     ylim = c(12.5, 18.7),
+     xlim = c(0, 0.3),
+     las =1)
+
+# get confidence interval
+min.nll <- min(r.profile)
+abline(h = min.nll, lwd = 3, lty = "dashed")
+
+r.mle <- rlist[r.profile==min.nll]
+target.nll <- min.nll + 1.92
+ci.index <- which(r.profile <= target.nll)
+lb <- rlist[min(ci.index)]
+ub <- rlist[max(ci.index)]
+lines(c(lb, ub), rep(target.nll, 2), lwd =4, col = "gray")
+
+k.profile <- apply(X = nll.matrix, MAR = 2, FUN = min)
+k.mle <- klist[k.profile==min.nll]
+
+# for demonstration: find maximum likelihood using numerical optimization
+start.pars <- c(0.1, 10)
+nb.soln <- optim(par = start.pars,
+                 fn = nll.fun,
+                 thedata = thedata,
+                 t = t,
+                 method = "Nelder-Mead")', sep = "\n")
 options(warn = 0)
 return(list(r.mle.grid = r.mle, r.mle.numeric = nb.soln$par[1], k.mle.grid = k.mle,
             k.mle.numeric = nb.soln$par[2], r.ci = c(lb, ub)))

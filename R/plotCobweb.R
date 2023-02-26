@@ -58,7 +58,7 @@ plotCobweb <- function(modeloutput, modelname, modelpars, viewcode = FALSE) {
   # extract carrying capacity from modelpars list
   K <- modelpars$K
   # make a list of N at time t
-  nt<- seq(from = 0, to = 1.5 * K, length.out = 100)
+  nt<- seq(from = 0, to = 2.0 * K, length.out = 100)
   # do this if model is "logistic"
   if(modelname == "logistic") {
 
@@ -94,8 +94,8 @@ plotCobweb <- function(modeloutput, modelname, modelpars, viewcode = FALSE) {
        lwd = 3,
        xlab = expression(paste("N"["t"], sep = "")),
        ylab = expression(paste("N"["t"+1], sep = "")),
-       ylim = c(0, 1.5 * K),
-       xlim <- c(0, 1.5 * K),
+       ylim = c(0, 2.0 * K),
+       xlim <- c(0, 2.0 * K),
        las =1,
        cex.lab = 1.25,
        cex.axis = 1.25

@@ -16,7 +16,7 @@ plotmodelfit <- function(x,
   #' @param N0: the fitted parameter N0 (only used for process error models)
   #' @param N1: the fitted parameter N1 (only used for observation error models)
   #' @param K: the fitted parameer K (only used for density dependent models
-  #' @param type: must be either "Process" or "Observation". Process error plotted as blue line, observation error plotted as red line
+  #' @param type: must be either "Process" or "Observation". Density independent models plotted appears as a blue line, Density dependent models plotted appears as red line
   #' @param add.to.plot: if TRUE, then adds fitted model to an existing plot.
   #' @examples
   #'
@@ -42,6 +42,7 @@ plotmodelfit <- function(x,
   ####### Error Checking######################
   #############################################
   type <- tolower(type)
+  names(x) <- tolower(names(x))
   if(type == "process" & is.null(N0)) stop("oops! you must provide N0 to plot the Process error model")
 
   if(type == "observation" & is.null(N1)) stop("oops! you must provide N1 to plot the Observation error model")

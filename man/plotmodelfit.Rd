@@ -25,7 +25,7 @@ plotmodelfit(
 
 \item{K:}{the fitted parameer K (only used for density dependent models}
 
-\item{type:}{must be either "Process" or "Observation". Process error plotted as blue line, observation error plotted as red line}
+\item{type:}{must be either "Process" or "Observation". Density independent models plotted appears as a blue line, Density dependent models plotted appears as red line}
 
 \item{add.to.plot:}{if TRUE, then adds fitted model to an existing plot.}
 }

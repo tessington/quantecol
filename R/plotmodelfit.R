@@ -34,7 +34,7 @@ plotmodelfit <- function(x,
   #' plotmodelfun(x = harborseals,
   #' r = dd.mle.pars[1],
   #' K = dd.mle.pars[2],
-  #' N1 = dd.mle.pars[3]
+  #' N0 = dd.mle.pars[3]
   #' type = "Process",
   #' add.to.plot = TRUE)
 

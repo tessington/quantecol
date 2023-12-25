@@ -67,8 +67,8 @@ plotmodelfit <- function(x,
            bg = "black",
            xlab = expression(N[t-1]),
            ylab = expression(N[t]),
-           xlim = c(0,7000),
-           ylim = c(0, 7000),
+           xlim = c(0,10000),
+           ylim = c(0, 10000),
            las =1,
            yaxs = "i",
            xaxs = "i")
@@ -80,7 +80,7 @@ plotmodelfit <- function(x,
            type = "p",
            pch = 21,
            bg= "black",
-           ylim = c(0, 7000),
+           ylim = c(0, 10000),
            las=1,
            xlab = "Year",
            ylab = "# Harbor Seals")
@@ -101,7 +101,7 @@ plotmodelfit <- function(x,
 
 plot.fitted.process <- function(r, K = NULL, N0, ndata) {
   nt <- rep(x = NA, times = ndata)
-  nlist <- seq(from = 0, to = 7000, by = 50)
+  nlist <- seq(from = 0, to = 10000, by = 50)
   if (is.null(K))
     lines(nlist, (1+r)*nlist,
           lwd = 2,

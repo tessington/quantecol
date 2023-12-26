@@ -52,7 +52,7 @@ plotmodelfit <- function(x,
   #############################################
 
   nt.obs <- x$abundance
-  month <- x$month
+  year <- x$year
   ndata <- length(nt.obs)
   maxnt <- max(nt.obs)
 
@@ -76,19 +76,23 @@ plotmodelfit <- function(x,
            yaxs = "i",
            xaxs = "i")
       plot.fitted.process(r, K, N0, ndata, ymax)
+      lines(nt.obs[-ndata], nt.obs[-1],
+            col = "gray"
+      )
     }
 
     if(type == "observation") {
-      plot(month,nt.obs,
+      plot(year,nt.obs,
            type = "p",
            pch = 21,
            bg= "black",
            ylim = c(0, ymax),
            las=1,
-           xlab = "Month",
-           ylab = "# Voles Observed")
-      plot.fitted.obs(r, K, N1, ndata, month)
-      }
+           xlab = "year",
+           ylab = "# Observed")
+      plot.fitted.obs(r, K, N1, ndata, year)
+    }
+
   }
   # if adding to an existing plot
   if(add.to.plot) {
@@ -96,7 +100,7 @@ plotmodelfit <- function(x,
       plot.fitted.process(r, K, N0, ndata)
     }
     if(type == "observation") {
-      plot.fitted.obs(r, K, N1, ndata, month)
+      plot.fitted.obs(r, K, N1, ndata, year)
     }
   }
 
@@ -115,13 +119,13 @@ plot.fitted.process <- function(r, K = NULL, N0, ndata, ymax) {
           col = "red4")
 }
 
-plot.fitted.obs <- function(r, K = NULL, N1, ndata, month) {
+plot.fitted.obs <- function(r, K = NULL, N1, ndata, year) {
   if (is.null(K)) {
     nt <- rep(x = NA, times = ndata)
     nt[1] <- N1
     for (i in 2:ndata)
       nt[i] <- nt[i - 1] * (1 + r)
-    lines(month, nt,
+    lines(year, nt,
           lwd = 2,
           col = "blue4")
   }
@@ -130,7 +134,7 @@ plot.fitted.obs <- function(r, K = NULL, N1, ndata, month) {
     nt[1] <- N1
     for (i in 2:ndata)
       nt[i] <- nt[i - 1] + nt[i - 1] *  r * (1 - nt[i - 1] / K)
-    lines(month, nt,
+    lines(year, nt,
           lwd = 2,
           col = "red4")
   }

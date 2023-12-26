@@ -55,7 +55,8 @@ plotmodelfit <- function(x,
   year <- x$year
   ndata <- length(nt.obs)
   maxnt <- max(nt.obs)
-  xmax <- ymax <- pretty(1:maxnt, n = 1)[2]
+
+  xmax <- ymax <- max(pretty(1:maxnt, n = 1))
 
   ####### if we are not adding to an existing plot####
   ####################################################

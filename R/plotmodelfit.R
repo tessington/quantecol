@@ -11,7 +11,7 @@ plotmodelfit <- function(x,
   #'
   #' @description Makes plot of data and one fitted dynamic model.  Can also add an additional fitted model to an existing plot
   #'
-  #' @param x: the data frame containing year and harbor seal abundances
+  #' @param x: the data frame containing week and vole abundances
   #' @param r: the fitted parameter r
   #' @param N0: the fitted parameter N0 (only used for process error models)
   #' @param N1: the fitted parameter N1 (only used for observation error models)
@@ -23,7 +23,7 @@ plotmodelfit <- function(x,
   #' #Plot best fitting process, density independent model with data
   #'
   #' di.mle.pars <- proc.di.fit$par
-  #' plotmodelfun(x = harborseals,
+  #' plotmodelfun(x = voles,
   #' r = di.mle.pars[1],
   #' N0= = di.mle.pars[2])
   #' type = "Process")
@@ -31,7 +31,7 @@ plotmodelfit <- function(x,
   #' # Add density dependent model fit to existing plot:
   #'
   #' dd.mle.pars <- proc.dd.fit$par
-  #' plotmodelfun(x = harborseals,
+  #' plotmodelfun(x = voles,
   #' r = dd.mle.pars[1],
   #' K = dd.mle.pars[2],
   #' N0 = dd.mle.pars[3]
@@ -52,7 +52,7 @@ plotmodelfit <- function(x,
   #############################################
 
   nt.obs <- x$abundance
-  year <- x$year
+  year <- x$week
   ndata <- length(nt.obs)
   maxnt <- max(nt.obs)
 
@@ -85,7 +85,7 @@ plotmodelfit <- function(x,
            bg= "black",
            ylim = c(0, ymax),
            las=1,
-           xlab = "Year",
+           xlab = "Week",
            ylab = "# Harbor Seals")
       plot.fitted.obs(r, K, N1, ndata, year)
       }

@@ -56,7 +56,7 @@ plotmodelfit <- function(x,
   ndata <- length(nt.obs)
   maxnt <- max(nt.obs)
 
-  xmax <- ymax <- max(pretty(1:maxnt, n = 1))
+  xmax <- ymax <- max(pretty(1:maxnt))
 
   ####### if we are not adding to an existing plot####
   ####################################################
@@ -75,7 +75,7 @@ plotmodelfit <- function(x,
            las =1,
            yaxs = "i",
            xaxs = "i")
-      plot.fitted.process(r, K, N0, ndata)
+      plot.fitted.process(r, K, N0, ndata, ymax)
     }
 
     if(type == "observation") {
@@ -102,7 +102,7 @@ plotmodelfit <- function(x,
 
 }
 
-plot.fitted.process <- function(r, K = NULL, N0, ndata) {
+plot.fitted.process <- function(r, K = NULL, N0, ndata, ymax) {
   nt <- rep(x = NA, times = ndata)
   nlist <- seq(from = 0, to = ymax, length.out = 100)
   if (is.null(K))

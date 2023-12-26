@@ -54,6 +54,8 @@ plotmodelfit <- function(x,
   nt.obs <- x$abundance
   year <- x$year
   ndata <- length(nt.obs)
+  maxnt <- max(nt.obs)
+  xmax <- ymax <- pretty(1:maxnt, n = 1)[2]
 
   ####### if we are not adding to an existing plot####
   ####################################################
@@ -67,8 +69,8 @@ plotmodelfit <- function(x,
            bg = "black",
            xlab = expression(N[t-1]),
            ylab = expression(N[t]),
-           xlim = c(0,10000),
-           ylim = c(0, 10000),
+           xlim = c(0,xmax),
+           ylim = c(0, ymax),
            las =1,
            yaxs = "i",
            xaxs = "i")
@@ -80,7 +82,7 @@ plotmodelfit <- function(x,
            type = "p",
            pch = 21,
            bg= "black",
-           ylim = c(0, 10000),
+           ylim = c(0, ymax),
            las=1,
            xlab = "Year",
            ylab = "# Harbor Seals")
@@ -101,7 +103,7 @@ plotmodelfit <- function(x,
 
 plot.fitted.process <- function(r, K = NULL, N0, ndata) {
   nt <- rep(x = NA, times = ndata)
-  nlist <- seq(from = 0, to = 10000, by = 50)
+  nlist <- seq(from = 0, to = ymax, length.out = 100)
   if (is.null(K))
     lines(nlist, (1+r)*nlist,
           lwd = 2,

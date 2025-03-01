@@ -11,11 +11,13 @@ plotmodelfit(
   N1 = NULL,
   K = NULL,
   type = "Process",
-  add.to.plot = F
+  add.to.plot = F,
+  diagnostic = F,
+  diagnostic.type = NULL
 )
 }
 \arguments{
-\item{x:}{the data frame containing year and harbor seal abundances}
+\item{x:}{the data frame containing month and population abundances}
 
 \item{r:}{the fitted parameter r}
 
@@ -25,9 +27,13 @@ plotmodelfit(
 
 \item{K:}{the fitted parameer K (only used for density dependent models}
 
-\item{type:}{must be either "Process" or "Observation". Density independent models plotted appears as a blue line, Density dependent models plotted appears as red line}
+\item{type:}{must be either "Process" or "Observation". Density independent model appears as a blue line, Density dependent model appears as red line}
 
 \item{add.to.plot:}{if TRUE, then adds fitted model to an existing plot.}
+
+\item{diagnostic:}{if TRUE, then plots one of three diagnostics (must include diagnostic type)}
+
+\item{diagnostic.type:}{must be either "obs_vs_predicted", "res_vs_predicted", or "res_vs_time"}
 }
 \description{
 Makes plot of data and one fitted dynamic model.  Can also add an additional fitted model to an existing plot
@@ -37,7 +43,7 @@ Makes plot of data and one fitted dynamic model.  Can also add an additional fit
 #Plot best fitting process, density independent model with data
 
 di.mle.pars <- proc.di.fit$par
-plotmodelfun(x = harborseals,
+plotmodelfun(x = voles,
 r = di.mle.pars[1],
 N0= = di.mle.pars[2])
 type = "Process")
@@ -45,7 +51,7 @@ type = "Process")
 # Add density dependent model fit to existing plot:
 
 dd.mle.pars <- proc.dd.fit$par
-plotmodelfun(x = harborseals,
+plotmodelfun(x = voles,
 r = dd.mle.pars[1],
 K = dd.mle.pars[2],
 N0 = dd.mle.pars[3]
